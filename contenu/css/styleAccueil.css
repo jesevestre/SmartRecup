@@ -1,0 +1,372 @@
+::before, ::after{
+    box-sizing: boder-box;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background: #333;
+    font-family: Arial, Helvetica, sans-serif;
+    height: 98.3vh;
+    background: url('../images/paysage.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative; /*Problématique pour passer en responsive*/
+    overflow-x: hidden;
+}
+
+.container-first{
+    position: absolute;
+    top: 15%;
+    left: 5%;
+}
+
+h1{
+    text-transform: uppercase;
+    font-size: 100px;
+    color: #F1F1F1;
+    font-family: "Abril fatface", sans-serif;
+}
+
+h1 span{
+    position: relative;
+}
+
+.container-btns{
+    position: relative;
+    top: 100px;
+}
+
+.btn-first{
+    border: 2px solid #F1F1F1;
+    border-radius: 8px;
+    outline: none;
+    background-color: var(--background-btn);
+    font-size: 30px;
+    padding: 20px;
+    width: 250px;
+    color: #FFF;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.btn-first:nth-child(1){
+    margin-right: 0px;
+}
+
+.btn-first:hover{
+    transition: all 0.3s ease-in-out;
+    background: #F1F1F1;
+    color: #333;
+}
+
+.lignes{
+    position: absolute;
+    top: 6%;
+    left: 5%;
+}
+
+.l1{
+    width: 300px;
+    height: 3px;
+    background: var(--trait);
+    border-radius: 5px;
+}
+
+.l2{
+    width: 200px;
+    height: 3px;
+    background: var(--trait);
+    border-radius: 5px;
+    position: relative;
+    top: 20px;
+}
+
+.logo{
+    position: absolute;
+    right: 2.9%;
+    top: 4%;
+    width: 80px;
+    cursor: pointer;
+}
+
+.medias{
+    list-style-type: none;
+    position: absolute;
+    right: 3.3%;
+    top: 55%;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: transparent;
+}
+
+.bulle{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid #F1F1F1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0;
+    background: #F1F1F1;
+    cursor: pointer;
+    position: relative;
+}
+
+.logo-medias{
+    width: 40px;
+    height: 40px;
+}
+
+/* Titre de l'accueil */
+span.titre{
+    background: var(--background);
+    color: #F1F1F1;
+}
+span.titreHidden{
+    background: var(--background);
+    color: #F1F1F1;
+}
+
+
+ /* Autorisation des cookies */
+.banniere{
+    border-top: rgb(216, 30, 30) 5px solid;
+    background: rgba(35, 35, 35, 0.970);
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    color: white;
+    display: flex;
+    justify-content: center;
+    padding: 5px;
+    font-family: "Signika Negative", sans-serif;
+    transform: translateY(100%);
+    animation: slide-in 2s 5s ease-out forwards;
+}
+@keyframes slide-in {
+    100% {
+        transform: translateY(0%);
+    }
+}
+
+.text-banniere p{
+    font-size: large;
+}
+
+.button-banniere-vert{
+    margin-top: 20px;
+}
+
+.button-banniere-rouge{
+    margin-top: 20px;
+}
+
+.button-banniere-vert a{
+    padding: 10px;
+    margin-right: 5px;
+    border-radius: 7px;
+    color: white;
+    text-decoration: none;
+    border: solid 1px green;
+    background: green;
+}
+
+.button-banniere-rouge a{
+    padding: 10px;
+    margin-right: 25px;
+    border-radius: 7px;
+    color: white;
+    text-decoration: none;
+    border: solid 1px rgb(216, 30, 30);
+    background: rgb(216, 30, 30);
+}
+
+/* Bouton pour switcher */
+.switch-mode{
+    position: absolute;
+    right: 14%;
+    top: 5%;
+    width: 80px;
+    cursor: pointer;
+}
+  
+input[type="checkbox"]{
+    width: 60px;
+    height: 30px;
+    background-color: white;
+    -webkit-appearance: none;
+    border-radius: 50px;
+    border: 2px solid #222;
+    outline: none;
+    cursor: pointer;
+}
+
+input:checked[type="checkbox"]{
+    background-color: #222;
+}
+
+input[type="checkbox"]:before{
+    content: " ";
+    position: absolute;
+    width: 23.5px;
+    height: 23.5px;
+    background-color: grey;
+    border-radius: 15px;
+    top: 6.1px;
+    left: 8px;
+    transition-duration: 0.5s;
+    z-index: 100;
+}
+
+input:checked[type="checkbox"]:before{
+    background-color: grey;
+    left: 37.5px;
+    z-index: 100;
+}
+
+.soleil_fonce{
+    width: 17px;
+    position: absolute;
+    right: 27.5%;
+    top: 22%;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.soleil_clair{
+    width: 17px;
+    position: absolute;
+    right: 65%;
+    top: 22%;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.img:checked:before.soleil_clair{
+    display: none;
+}
+
+/* Accessiblité mobile/tablette/PC */
+@media screen and (max-width: 1585px) {
+    span.titreHidden{
+        color: transparent;
+        background-color: transparent;
+    }
+    .container-btns{
+        position: relative;
+        top: -40px;
+        margin-right: 100px;
+    }
+    .button-banniere-vert{
+        padding-right: 1%;
+    }
+}
+
+@media screen and (max-width: 955px) {
+    h1{
+        text-transform: uppercase;
+        font-size: 80px;
+        color: #F1F1F1;
+        font-family: "Abril fatface", sans-serif;
+    }
+    .button-banniere{
+        margin-left: 10%;
+    }
+    .button-banniere a{
+        margin-left: -50%;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    /*.container-btns{
+        position: relative;
+        top: -50px;
+    }*/
+    .l1{
+        width: 200px;
+    }
+    .l2{
+        width: 90px;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    h1{
+        text-transform: uppercase;
+        font-size: 60px;
+        color: #F1F1F1;
+        font-family: "Abril fatface", sans-serif;
+    }
+    .invisible-banniere-text{
+        display: none;
+    }
+    .switch-mode{
+        display: none
+    }
+}
+
+@media screen and (max-width: 535px) {
+    .medias{
+        top: 60%;
+    }
+    .container-btns{
+        position: relative;
+        top: -50px;
+        margin-right: 50px;
+    }
+    .invisible-banniere-button{
+        display: none;
+    }
+    .button-banniere-vert a{
+        margin-right: 5px;
+    }
+    .btn-first{
+        border: 2px solid #F1F1F1;
+        outline: none;
+        background: rgba(60, 60, 60, 0.6);
+        font-size: 15px;
+        padding: 20px;
+        width: 150px;
+        color: #F1F1F1;
+        cursor: pointer;
+        font-weight: bold;
+    }
+    .l1{
+        width: 150px;
+    }
+    
+    .l2{
+        width: 80px;
+    }
+}
+
+@media screen and (max-width: 300px) {
+    
+    .l1{
+        width: 150px;
+    }
+    .l2{
+        width: 40px;
+    }
+}
+
+/* Les modes de constrastes */
+:root {
+    --background: transparent;
+    --background-btn: rgba(60, 60, 60, 0.5);
+    --trait: #F1F1F1;
+}
+
+/* En mode Clair ou Sombre en fonction de la config PC */
+@media (prefers-color-scheme: light){
+
+}
+
+@media (prefers-color-scheme: dark){
+}

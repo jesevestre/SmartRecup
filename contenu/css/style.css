@@ -1,0 +1,153 @@
+::before, ::after {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #333;
+    font-family: Arial, Helvetica, sans-serif;
+    height: 98.3vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative; /*Problématique pour passer en responsive*/
+    overflow-x: hidden;
+    width: 97.5%;
+}
+
+.container-first {
+    position: absolute;
+    top: 15%;
+    left: 5%;
+}
+
+/* Page formulaires */
+.cadrage1 {
+    padding-top: 15%;
+}
+
+.cadrage2 {
+    background-color: #333;
+    opacity: 95%;
+    border-radius: 8px;
+    z-index: 1 !important;
+}
+
+.cadrage3 {
+    padding-top: 5%;
+}
+
+.cadrageMessage {
+    width: 90%;
+    padding-top: 5%;
+}
+
+/* Titre */
+h1 {
+    text-align: center !important;
+    outline: none;
+    font-size: 10%;
+
+    color: #FFF !important;
+    font-weight: bold;
+    z-index: 2 !important;
+}
+
+h2 {
+    text-align: center !important;
+    outline: none;
+    font-size: 5%;
+
+    color: #FFF !important;
+    font-weight: bold;
+    z-index: 2 !important;
+}
+
+.btn-decouvrir {
+    background-color: red !important;
+}
+
+/* Page inscription */
+.legendegenre {
+    font-size: 110%;
+    color: white;
+}
+
+/* Page découvrir */
+.iframe {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+
+    width: 100%;
+}
+
+.justifie {
+    text-align: justify;
+    color: white;
+}
+
+/* Page tableau de bord */
+#divMessage2 {
+    display: none; 
+    padding-top: 71px;
+}
+
+/* Page modale */
+.legendegenreModaleFemme {
+    margin-left: 80px;
+}
+
+.legendegenreModaleHomme {
+    margin-left: 120px;
+}
+
+.InputVentouseEtMassage {
+    cursor: grab;
+}
+
+.form-control {
+    cursor: grab;
+}
+
+.cursorGrab {
+    cursor: grab;
+}
+
+.legendeVentouse {
+    margin-left: 10px;
+}
+
+.legendeMassage {
+    margin-left: 50px;
+}
+
+.legendeVentouseMassage {
+    margin-left: 50px;
+}
+/* Footer */
+.footer {
+    position: absolute;
+    width: 102.5%;
+    bottom: -22px;
+    background-color: #444;
+}
+
+/* Accessiblité mobile/tablette/PC */
+@media screen and (max-width: 1000px) {
+    .cadrage1 {
+        padding-top: 35%;
+    }
+    .cadrage2 {
+        width: 90% !important;
+    }
+    .cadrage3 {
+        padding-top: 20%;
+    }
+    .cadrage4 {
+        padding-top: 3% !important;
+    }
+    #divMessage2 {
+        display: none; 
+        padding-top: 92px;
+    }
+}
