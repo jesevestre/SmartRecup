@@ -121,8 +121,12 @@ if($_SESSION["email"]) {
                     $message = "";
                     $icone = "fa fa-exclamation-triangle";
                     $color = "alert-danger";
-            } else if ($success == "success") {
-                $message = "Bienvenue " . $utilisateur[0]->prenom . " ! A partir de cette interface, vous pouvez gérer vos rendez-vous ainsi que votre profil utilisateur";
+            } else if ($success == "success" && $utilisateur[0]->administrateur != 1) {
+                $message = "Bienvenue " . $utilisateur[0]->prenom . " ! A partir de cette interface, vous pouvez gérer vos rendez-vous";
+                $icone = "fas fa-hand-holding-medical";
+                $color = "alert-success";
+            } else if ($success == "success" && $utilisateur[0]->administrateur == 1) {
+                $message = "Bienvenue " . $utilisateur[0]->prenom . " ! A partir de cette interface, vous pouvez gérer les rendez-vous des utilisateurs et prendre note de ceux réservés";
                 $icone = "fas fa-hand-holding-medical";
                 $color = "alert-success";
             } else if ($success == "success2") {
@@ -163,15 +167,15 @@ if($_SESSION["email"]) {
 
             <?php if ($utilisateur[0]->administrateur != 1) { ?>
             <div class="col-12 d-grid mx-auto pt-3">
-                <a class="btn btn-success col-11 mx-auto" data-bs-toggle="modal" data-bs-target="#rendezvousVentouse" data-bs-backdrop="static"><i class="fa-sharp fa-solid fa-calendar-check"></i> Les <b>ventouses</b></a>
+                <a class="btn btn-success col-11 mx-auto" data-bs-toggle="modal" data-bs-target="#rendezvousVentouse" data-bs-backdrop="static"><i class="fa-sharp fa-solid fa-calendar-check"></i> Les ventouses</a>
             </div>
 
             <div class="col-12 d-grid mx-auto pt-3">
-                <a class="btn btn-success col-11 mx-auto" data-bs-toggle="modal" data-bs-target="#rendezvousMassage" data-bs-backdrop="static"><i class="fa-sharp fa-solid fa-calendar-check"></i> Les <b>massages</b></a>
+                <a class="btn btn-success col-11 mx-auto" data-bs-toggle="modal" data-bs-target="#rendezvousMassage" data-bs-backdrop="static"><i class="fa-sharp fa-solid fa-calendar-check"></i> Les massages</a>
             </div>
 
             <div class="col-12 d-grid mx-auto pt-3">
-                <a class="btn btn-success col-11 mx-auto" data-bs-toggle="modal" data-bs-target="#rendezvousVentouseMassage" data-bs-backdrop="static"><i class="fa-sharp fa-solid fa-calendar-check"></i> Les <b>ventouses</b> et les <b>massages</b></a>
+                <a class="btn btn-success col-11 mx-auto" data-bs-toggle="modal" data-bs-target="#rendezvousVentouseMassage" data-bs-backdrop="static"><i class="fa-sharp fa-solid fa-calendar-check"></i> Les ventouses et les massages</a>
             </div>
             <?php } else { ?>
                 <div class="col-12 d-grid mx-auto pt-3">
@@ -340,7 +344,7 @@ if($_SESSION["email"]) {
 <?php
 // Si ce n'est pas une vrai connexion, retour à l'accueil
 } else {
-    header("location: /");
+    header("location: ../index.php");
 }
 ?>
 
@@ -558,64 +562,6 @@ if($_SESSION["email"]) {
                             <input type="hidden" name="action" value="supprimerRendezvousModal">
                             <input type="hidden" name="id_utilisateur" value="<?= $utilisateur[0]->id ?>">
                             <button type="submit" class="btn btn-danger btn-sm" style="width: 90%;" id="btnEditProfil" data-loading-text="<i class='fa fa-spinner fa-pulse'></i> Enregistrement en cours">Supprimer <i class="fa fa-save"></i></button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </form>
-    </div>
-</div>
-
-<!-- Modale de retirer un rendez-vous utilisateur par l'administrateur -->
-<div class="modal fade" id="retirerRendezvousModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <form method="post" action="../controlleur/controlleurTableaudebord.php">
-            <div class="modal-content">
-                <div class="modal-header bg-warning text-white">
-                    <h5 class="modal-title"><i class="fa fa-times"></i> Retirer un rendez-vous utilisateur</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div id="divMessage" class="alert bg-light text-center small">
-                    <i class="fa fa-times"></i> <b>Êtes-vous certain de retirer le rendez-vous de cet utilisateur ? Il sera libéré pour une autre personne ou pourra être supprimé par la suite.</b>
-                    </div>
-                    <div class="modal-footer">
-                        <div class="col-5">
-                            <a href="#" data-bs-dismiss="modal" type="submit" class="btn btn-secondary btn-sm w-100"><i class="fa fa-times"></i> Annuler</a>
-                        </div>
-                        <div class="col-6">
-                            <input type="hidden" name="action" value="retirerRendezvousModal">
-                            <!-- <input type="hidden" name="id_utilisateur" value="<?= $reservationUtilisateur[0]->id ?>"> -->
-                            <button type="submit" class="btn btn-warning btn-sm" style="width: 90%;" id="btnEditProfil" data-loading-text="<i class='fa fa-spinner fa-pulse'></i> Enregistrement en cours">Retirer <i class="fa fa-save"></i></button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </form>
-    </div>
-</div>
-
-<!-- Modale de retirer un rendez-vous utilisateur par l'utilisateur -->
-<div class="modal fade" id="retirerRendezvousUtiModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <form method="post" action="../controlleur/controlleurTableaudebord.php">
-            <div class="modal-content">
-                <div class="modal-header bg-warning text-white">
-                    <h5 class="modal-title"><i class="fa fa-times"></i> Retirer ce rendez-vous</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div id="divMessage" class="alert bg-light text-center small">
-                    <i class="fa fa-times"></i> <b>Êtes-vous certain de retirer ce rendez-vous de votre liste ? Il sera libéré pour une autre personne.</b>
-                    </div>
-                    <div class="modal-footer">
-                        <div class="col-5">
-                            <a href="#" data-bs-dismiss="modal" type="submit" class="btn btn-secondary btn-sm w-100"><i class="fa fa-times"></i> Annuler</a>
-                        </div>
-                        <div class="col-6">
-                            <input type="hidden" name="action" value="retirerRendezvousModal">
-                            <!-- <input type="hidden" name="id_utilisateur" value="<?= $reservationUtilisateur[0]->id ?>"> -->
-                            <button type="submit" class="btn btn-warning text-white btn-sm" style="width: 90%;" id="btnEditProfil" data-loading-text="<i class='fa fa-spinner fa-pulse'></i> Enregistrement en cours">Retirer <i class="fa fa-save"></i></button>
                         </div>
                     </div>
                 </div>
