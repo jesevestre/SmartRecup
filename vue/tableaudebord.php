@@ -72,7 +72,7 @@ if($utilisateur[0]->administrateur != 1) {
 
 // Récupération des reservations pour l'administrateur
 if($utilisateur[0]->administrateur == 1) {
-    $sql = "SELECT Reservations.id AS reservation_id, res_etat.libelle AS libelle_etat, res_type.libelle AS libelle_type, duree_moyenne, date, commentaire, prenom, nom, telephone, genre
+    $sql = "SELECT Reservations.id AS reservation_id, res_etat.libelle AS libelle_etat, res_type.libelle AS libelle_type, duree_moyenne, date, commentaire, prenom, nom, email, telephone, genre
             FROM Reservations 
             INNER JOIN Utilisateurs ON Reservations.id_utilisateur = Utilisateurs.id
             INNER JOIN Reservation_type AS res_type ON Reservations.id_type = res_type.id
@@ -83,11 +83,71 @@ if($utilisateur[0]->administrateur == 1) {
     $req->execute(array($date_aujourdhui));
     $reservationsAdministrateur = $req->fetchAll(PDO::FETCH_OBJ);
 }
+?>
+
+<script>
+// Commentaire du rendez-vous 
+function edit_com_rdv_uti(reservation_id)
+{
+    document.location.href="tableaudebord.php?reservation_id=" + reservation_id;
+}
+</script>
+
+<?php
+// Récupération de l'id de la réservation pour étition commentaires
+if (isset($_GET["reservation_id"])) {
+    $reservation_id = $_GET["reservation_id"];
+    $sql = "SELECT commentaire
+            FROM Reservations 
+            WHERE id = ?";    
+    $req = $pdo->prepare($sql);
+    $req->execute(array($reservation_id));
+    $reservation_edit = $req->fetchAll(PDO::FETCH_OBJ);
+?>
+
+<div class="col-12 d-grid mx-auto pt-3">
+    <a class="btn btn-danger col-11 mx-auto" data-bs-toggle="modal" data-bs-target="#editCommentaireModal" data-bs-backdrop="static"><i class="fa fa-times"></i> hein</a>
+</div>
+
+<script>
+    // $('#editCommentaireModal').trigger('focus');
+</script>
+
+<!-- Modale ajouter/modifier d'un commentaire pour rdv -->
+<div class="modal fade" id="editCommentaireModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" data-show="true">
+    <div class="modal-dialog" role="document">
+        <form method="post" action="../controlleur/controlleurTableaudebord.php">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title"><i class="fas fa-comment"></i> Ajouter/modifier un commentaire pour le rdv</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group pb-2">
+                        <label for="recipient-name">Commentaire</label>
+                        <input type="text" class="form-control" name="commentaire" value="<?= $reservation_edit[0]->commentaire ?>">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="col-5">
+                        <a href="#" data-bs-dismiss="modal" type="submit" class="btn btn-secondary btn-sm w-100"><i class="fa fa-times"></i> Annuler</a>
+                    </div>
+                    <div class="col-6">
+                        <input type="hidden" name="action" value="editCommentaireModal">
+                        <input type="hidden" name="id_reservation" value="<?= $reservation_id ?>">
+                        <button type="submit" class="btn btn-success btn-sm" style="width: 90%;" id="btnEditCommentaire" data-loading-text="<i class='fa fa-spinner fa-pulse'></i> Enregistrement en cours">Enregistrer <i class="fa fa-save"></i></button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<?php
+}
 
 // Si c'est une vrai connexion et que la session est toujours active
 if($_SESSION["email"]) {
 ?>
-
 <div class="container">
     <div class="row justify-content-around d-flex justify-content-center cadrage4">
 
@@ -147,6 +207,10 @@ if($_SESSION["email"]) {
                 $color = "alert-success";
             } else if ($success == "success6") {
                 $message = "Le rendez-vous a bien été retirer";
+                $icone = "fa-solid fa-check";
+                $color = "alert-success";
+            } else if ($success == "success7") {
+                $message = "Le commentaire du rendez-vous a bien été ajouter/modifier";
                 $icone = "fa-solid fa-check";
                 $color = "alert-success";
             }
@@ -216,8 +280,8 @@ if($_SESSION["email"]) {
 
             <?php if ($utilisateur[0]->administrateur != 1) { ?>
                 <div class="row">
-                    <?php foreach($reservationsUtilisateur AS $reservationUti): ?>
-                        <?php
+                    <?php foreach($reservationsUtilisateur AS $reservationUti):
+
                         $dateColor = substr($reservationUti->date, 0, 10);
                         if ($dateColor == $date_aujourdhui) {
                             $themeCard = "text-white bg-success";
@@ -249,19 +313,28 @@ if($_SESSION["email"]) {
                             <div class="card <?= $themeCard ?>">
                                 <div class="card-body">
                                     <div class="row">
-                                        <div class="col-4">
+                                        <div class="col-5">
                                             <b><?= $reservationUti->libelle_type ?></b>
                                         </div>
-                                        <div class="col-4">
+                                        <div class="col-5">
                                             <?= $date ?>
                                         </div>
                                         <div class="col-2">
                                             <?= $temps ?>
                                         </div>
-                                        <div class="col-2">
-                                            <?php if ($dateColor > $date_aujourdhui) { ?>
-                                                <a class="btn btn-warning mx-auto" name="action" onclick="javascript:retirer_rdv_uti(<?= $reservationUti->reservation_id ?>);"><i class="fa fa-times"></i></a>
-                                            <?php } ?>
+                                    </div>
+                                    <div class="row">
+                                        <div class="modal-footer col-10 mt-3">
+                                            <div class="col-5">
+                                                <?php if ($dateColor >= $date_aujourdhui) { ?>
+                                                    <a class="btn btn-primary mx-auto w-100" name="action" onclick="javascript:edit_com_rdv_uti(<?= $reservationUti->reservation_id ?>);"><i class="fa fa-comment"></i></a>
+                                                <?php } ?>
+                                            </div>
+                                            <div class="col-5">
+                                                <?php if ($dateColor > $date_aujourdhui) { ?>
+                                                    <a class="btn btn-warning mx-auto w-100" name="action" onclick="javascript:retirer_rdv_uti(<?= $reservationUti->reservation_id ?>);"><i class="fa fa-times"></i></a>
+                                                <?php } ?>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -310,23 +383,33 @@ if($_SESSION["email"]) {
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col-12">
-                                            <h5 class="card-title"><?= $genre . " " . $reservationAdministrateur->prenom . " " . $reservationAdministrateur->nom . " - " . $reservationAdministrateur->telephone ?></h5>
+                                            <h5 class="card-title"><?= $genre . " " . $reservationAdministrateur->prenom . " " . $reservationAdministrateur->nom . " - " . $reservationAdministrateur->telephone . " - " . $reservationAdministrateur->email ?></h5>
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-4">
+                                        <div class="col-5">
                                             <b><?= $reservationAdministrateur->libelle_type ?></b>
                                         </div>
-                                        <div class="col-4">
+                                        <div class="col-5">
                                             <?= $date ?>
                                         </div>
                                         <div class="col-2">
                                             <?= $temps ?>
                                         </div>
-                                        <div class="col-2">
-                                            <a class="btn btn-warning mx-auto" name="action" onclick="javascript:retirer_rdv_admin(<?= $reservationAdministrateur->reservation_id ?>);">
-                                                <i class="fa fa-times"></i>
-                                            </a>
+                                    </div>
+                                    <div class="row">
+                                        <div class="modal-footer col-10 mt-3">
+                                            <div class="col-5">                             
+                                                <?php if ($reservationAdministrateur->commentaire != NULL || $reservationAdministrateur->commentaire != "") { ?>
+                                                    <a class="btn btn-primary mx-auto w-100" name="action" onclick="javascript:voir_commentaire('<?= $reservationAdministrateur->commentaire ?>');">
+                                                        <i class="fas fa-comment"></i></a>
+                                                <?php } ?>
+                                            </div>
+                                            <div class="col-5">
+                                                <a class="btn btn-warning mx-auto w-100" name="action" onclick="javascript:retirer_rdv_admin(<?= $reservationAdministrateur->reservation_id ?>);">
+                                                    <i class="fa fa-times"></i>
+                                                <a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -344,7 +427,20 @@ if($_SESSION["email"]) {
 <?php
 // Si ce n'est pas une vrai connexion, retour à l'accueil
 } else {
-    header("location: ../index.php");
+?>
+<div class="container">
+    <div class="row justify-content-around d-flex justify-content-center cadrage4">
+        <div class="col-12 d-grid mx-auto pb-3 pt-3">
+            <div class="alert alert-warning text-center small">
+                <b>Votre session a expirée, veuillez vous reconnecter</b>
+            </div>
+        </div>
+        <div class="col-12 d-grid mx-auto pb-3">
+            <a href="connexion.php" type="button" class="btn btn-primary col-11 mx-auto"><i class="fas fa-sign-out-alt"></i> Connexion</a>
+        </div>
+    </div>
+</div>
+<?php
 }
 ?>
 
@@ -643,6 +739,7 @@ if($_SESSION["email"]) {
         </form>
     </div>
 </div>
+
 </body>
 </html>
 

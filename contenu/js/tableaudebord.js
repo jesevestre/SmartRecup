@@ -40,8 +40,14 @@ function retirer_rdv_admin(reservation_id)
 }
 function retirer_rdv_uti(reservation_id)
 {
-    if (confirm("Êtes-vous certain de retirer ce rendez-vous de votre liste ? Il sera libéré pour une autre personne." + reservation_id))
+    if (confirm("Êtes-vous certain de retirer ce rendez-vous de votre liste ? Il sera libéré pour une autre personne."))
     {
         document.location.href="../controlleur/controlleurTableaudebord.php?retirer_rdv=" + reservation_id;
     }
+}
+
+// Commentaire des rendez-vous 
+function voir_commentaire(commentaire)
+{
+    alert("Le commentaire pour ce rendez-vous est : " + commentaire);
 }

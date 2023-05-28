@@ -63,4 +63,17 @@ function retirerRendezvous($pdo, $id_reservation) {
         return false;
     }
 }
+
+function editCommentaireRdv($pdo, $commentaire, $id_reservation) {
+    $sql = "UPDATE Reservations SET commentaire = ? WHERE id = ?";    
+    $req = $pdo->prepare($sql);
+    $req->execute(array($commentaire, $id_reservation));
+    $result = $req;
+
+    if($result) {
+        return true;
+    } else {
+        return false;
+    }
+}
 ?>

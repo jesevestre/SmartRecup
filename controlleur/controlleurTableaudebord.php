@@ -87,4 +87,22 @@ if(isset($_GET['retirer_rdv'])) {
 		echo "<script>window.location.href='../vue/tableaudebord.php?error=error2';</script>"; exit;
 	}
 }
+
+if(isset($_POST['action']) && $_POST['action'] == "editCommentaireModal") {
+    $id_reservation = $_POST['id_reservation'];
+	$commentaire = $_POST['commentaire'];
+
+	if(!empty($id_reservation) && !empty($commentaire)) {
+		$result = editCommentaireRdv($pdo, $commentaire, $id_reservation);
+
+		if($result == true) {
+			echo "<script>window.location.href='../vue/tableaudebord.php?success=success7';</script>"; exit;
+		} else {
+			echo "<script>window.location.href='../vue/tableaudebord.php?error=error';</script>"; exit;
+		}
+	} else {
+		echo "<script>window.location.href='../vue/tableaudebord.php?error=error2';</script>"; exit;
+	}
+}
+
 ?>
