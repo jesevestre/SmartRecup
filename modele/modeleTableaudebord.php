@@ -52,7 +52,7 @@ function supprimerRendezvous($pdo, $id_reservation) {
 }
 
 function retirerRendezvous($pdo, $id_reservation) {
-    $sql = "UPDATE Reservations SET id_utilisateur = NULL, id_type = 1 WHERE id = ?";    
+    $sql = "UPDATE Reservations SET id_utilisateur = NULL, id_etat = 1, commentaire = NULL WHERE id = ?";    
     $req = $pdo->prepare($sql);
     $req->execute(array($id_reservation));
     $result = $req;

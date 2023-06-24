@@ -31,23 +31,37 @@ function premierCaractereMaj(texte) {
 }
 
 // Confirmation pour retirer un rendez-vous 
-function retirer_rdv_admin(reservation_id)
-{
-    if (confirm("Êtes-vous certain de retirer le rendez-vous de cet utilisateur ? Il sera libéré pour une autre personne ou pourra être supprimé par la suite."))
-    {
-        document.location.href="../controlleur/controlleurTableaudebord.php?retirer_rdv=" + reservation_id;
-    }
+function retirerRdv(retirerRendezvousModal) {
+    document.location.href="../controlleur/controlleurTableaudebord.php?retirerRendezvousModal=" + retirerRendezvousModal;
 }
-function retirer_rdv_uti(reservation_id)
-{
-    if (confirm("Êtes-vous certain de retirer ce rendez-vous de votre liste ? Il sera libéré pour une autre personne."))
-    {
-        document.location.href="../controlleur/controlleurTableaudebord.php?retirer_rdv=" + reservation_id;
-    }
-}
+
+$('.btnRetirerRdv').click(function (e) {
+    e.preventDefault();
+    var $this = $(this);
+    $('#btnSubmitRetirerRdv').data("idrdv", $this.data('idrdv'));
+});
+
+$('#btnSubmitRetirerRdv').click(function (e) {
+    e.preventDefault();
+    var $this = $(this);
+    retirerRdv($this.data("idrdv"));
+});
+
+$('#btnCloseRetirerRdv').click(function (e) {
+    e.preventDefault();
+    $('#btnRetirerRdv').modal('hide');
+});
 
 // Commentaire des rendez-vous 
 function voir_commentaire(commentaire)
 {
-    alert("Le commentaire pour ce rendez-vous est : " + commentaire);
+    $('#btnVoirCommentaire').modal('show');
+    $('#voirCommentaire').val(commentaire);
+}
+
+function editer_commentaire(commentaire, reservation_id)
+{
+    $('#btnEditerCommentaire').modal('show');
+    $('#reservation_id').val(reservation_id);
+    $('#voirCommentaireUti').val(commentaire);
 }

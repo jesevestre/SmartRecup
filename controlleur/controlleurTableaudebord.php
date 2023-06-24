@@ -72,8 +72,8 @@ if(isset($_POST['action']) && $_POST['action'] == "supprimerRendezvousModal") {
 	}
 }
 
-if(isset($_GET['retirer_rdv'])) {
-    $id_reservation = $_GET['retirer_rdv'];
+if(isset($_GET['retirerRendezvousModal'])) {
+    $id_reservation = $_GET['retirerRendezvousModal'];
 
 	if(!empty($id_reservation)) {
 		$result = retirerRendezvous($pdo, $id_reservation);
@@ -92,7 +92,7 @@ if(isset($_POST['action']) && $_POST['action'] == "editCommentaireModal") {
     $id_reservation = $_POST['id_reservation'];
 	$commentaire = $_POST['commentaire'];
 
-	if(!empty($id_reservation) && !empty($commentaire)) {
+	if(!empty($id_reservation)) {
 		$result = editCommentaireRdv($pdo, $commentaire, $id_reservation);
 
 		if($result == true) {

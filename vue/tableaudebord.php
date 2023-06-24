@@ -85,66 +85,7 @@ if($utilisateur[0]->administrateur == 1) {
 }
 ?>
 
-<script>
-// Commentaire du rendez-vous 
-function edit_com_rdv_uti(reservation_id)
-{
-    document.location.href="tableaudebord.php?reservation_id=" + reservation_id;
-}
-</script>
-
 <?php
-// Récupération de l'id de la réservation pour étition commentaires
-if (isset($_GET["reservation_id"])) {
-    $reservation_id = $_GET["reservation_id"];
-    $sql = "SELECT commentaire
-            FROM Reservations 
-            WHERE id = ?";    
-    $req = $pdo->prepare($sql);
-    $req->execute(array($reservation_id));
-    $reservation_edit = $req->fetchAll(PDO::FETCH_OBJ);
-?>
-
-<div class="col-12 d-grid mx-auto pt-3">
-    <a class="btn btn-danger col-11 mx-auto" data-bs-toggle="modal" data-bs-target="#editCommentaireModal" data-bs-backdrop="static"><i class="fa fa-times"></i> hein</a>
-</div>
-
-<script>
-    // $('#editCommentaireModal').trigger('focus');
-</script>
-
-<!-- Modale ajouter/modifier d'un commentaire pour rdv -->
-<div class="modal fade" id="editCommentaireModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" data-show="true">
-    <div class="modal-dialog" role="document">
-        <form method="post" action="../controlleur/controlleurTableaudebord.php">
-            <div class="modal-content">
-                <div class="modal-header bg-primary text-white">
-                    <h5 class="modal-title"><i class="fas fa-comment"></i> Ajouter/modifier un commentaire pour le rdv</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="form-group pb-2">
-                        <label for="recipient-name">Commentaire</label>
-                        <input type="text" class="form-control" name="commentaire" value="<?= $reservation_edit[0]->commentaire ?>">
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <div class="col-5">
-                        <a href="#" data-bs-dismiss="modal" type="submit" class="btn btn-secondary btn-sm w-100"><i class="fa fa-times"></i> Annuler</a>
-                    </div>
-                    <div class="col-6">
-                        <input type="hidden" name="action" value="editCommentaireModal">
-                        <input type="hidden" name="id_reservation" value="<?= $reservation_id ?>">
-                        <button type="submit" class="btn btn-success btn-sm" style="width: 90%;" id="btnEditCommentaire" data-loading-text="<i class='fa fa-spinner fa-pulse'></i> Enregistrement en cours">Enregistrer <i class="fa fa-save"></i></button>
-                    </div>
-                </div>
-            </div>
-        </form>
-    </div>
-</div>
-<?php
-}
-
 // Si c'est une vrai connexion et que la session est toujours active
 if($_SESSION["email"]) {
 ?>
@@ -210,7 +151,7 @@ if($_SESSION["email"]) {
                 $icone = "fa-solid fa-check";
                 $color = "alert-success";
             } else if ($success == "success7") {
-                $message = "Le commentaire du rendez-vous a bien été ajouter/modifier";
+                $message = "Le commentaire du rendez-vous a été mis à jour";
                 $icone = "fa-solid fa-check";
                 $color = "alert-success";
             }
@@ -302,6 +243,7 @@ if($_SESSION["email"]) {
                             $heure = substr($reservationUti->date, 11, 2);
                             $minute = substr($reservationUti->date, 14, 2);
                             $date = "Le " . $jour . "/" . $mois . "/" . $annee . " à " . $heure . "h" . $minute;
+                            $date2 = $jour . "/" . $mois . "/" . $annee . " à " . $heure . "h" . $minute;
                         }
 
                         $heure = substr($reservationUti->duree_moyenne, 1, 1);
@@ -325,14 +267,16 @@ if($_SESSION["email"]) {
                                     </div>
                                     <div class="row">
                                         <div class="modal-footer col-10 mt-3">
-                                            <div class="col-5">
+                                            <div class="col-2"></div>
+                                            <div class="col-4">
                                                 <?php if ($dateColor >= $date_aujourdhui) { ?>
-                                                    <a class="btn btn-primary mx-auto w-100" name="action" onclick="javascript:edit_com_rdv_uti(<?= $reservationUti->reservation_id ?>);"><i class="fa fa-comment"></i></a>
+                                                    <a class="btn btn-primary mx-auto w-100 btnEditerCommentaire" onclick="javascript:editer_commentaire('<?= $reservationUti->commentaire ?>', '<?= $reservationUti->reservation_id ?>');"><i class="fa fa-comment"></i></a>
                                                 <?php } ?>
                                             </div>
-                                            <div class="col-5">
+                                            <div class="col-2"></div>
+                                            <div class="col-4">
                                                 <?php if ($dateColor > $date_aujourdhui) { ?>
-                                                    <a class="btn btn-warning mx-auto w-100" name="action" onclick="javascript:retirer_rdv_uti(<?= $reservationUti->reservation_id ?>);"><i class="fa fa-times"></i></a>
+                                                    <a class="btn btn-warning mx-auto w-100 btnRetirerRdv" data-idrdv="<?= $reservationUti->reservation_id ?>" data-date2="<?php $date2 ?>" data-bs-toggle="modal" data-bs-target="#btnRetirerRdv" href="#" data-bs-backdrop="static"><i class="fa fa-times"></i></a>
                                                 <?php } ?>
                                             </div>
                                         </div>
@@ -371,13 +315,13 @@ if($_SESSION["email"]) {
                             $heure = substr($reservationAdministrateur->date, 11, 2);
                             $minute = substr($reservationAdministrateur->date, 14, 2);
                             $date = "Le " . $jour . "/" . $mois . "/" . $annee . " à " . $heure . "h" . $minute;
+                            $date2 = $jour . "/" . $mois . "/" . $annee . " à " . $heure . "h" . $minute;
                         }
-
+                        
                         $heure = substr($reservationAdministrateur->duree_moyenne, 1, 1);
                         $minute = substr($reservationAdministrateur->duree_moyenne, 3, 2);
                         $temps = $heure . "h" . $minute;
                     ?>
-
                         <div class="col-12 mb-3">
                             <div class="card <?= $themeCard ?>">
                                 <div class="card-body">
@@ -399,16 +343,15 @@ if($_SESSION["email"]) {
                                     </div>
                                     <div class="row">
                                         <div class="modal-footer col-10 mt-3">
-                                            <div class="col-5">                             
+                                            <div class="col-2"></div>
+                                            <div class="col-4">
                                                 <?php if ($reservationAdministrateur->commentaire != NULL || $reservationAdministrateur->commentaire != "") { ?>
-                                                    <a class="btn btn-primary mx-auto w-100" name="action" onclick="javascript:voir_commentaire('<?= $reservationAdministrateur->commentaire ?>');">
-                                                        <i class="fas fa-comment"></i></a>
+                                                    <a class="btn btn-primary mx-auto w-100 btnVoirCommentaire" onclick="javascript:voir_commentaire('<?= $reservationAdministrateur->commentaire ?>')"><i class="fas fa-comment"></i></a>
                                                 <?php } ?>
                                             </div>
-                                            <div class="col-5">
-                                                <a class="btn btn-warning mx-auto w-100" name="action" onclick="javascript:retirer_rdv_admin(<?= $reservationAdministrateur->reservation_id ?>);">
-                                                    <i class="fa fa-times"></i>
-                                                <a>
+                                            <div class="col-2"></div>
+                                            <div class="col-4">
+                                                <a class="btn btn-warning mx-auto w-100 btnRetirerRdv" data-idrdv="<?= $reservationAdministrateur->reservation_id ?>" data-date2="<?php $date2 ?>" data-bs-toggle="modal" data-bs-target="#btnRetirerRdv" href="#" data-bs-backdrop="static"><i class="fa fa-times"></i></a>
                                             </div>
                                         </div>
                                     </div>
@@ -444,6 +387,87 @@ if($_SESSION["email"]) {
 }
 ?>
 
+<!-- Modale pour editer le commentaire -->
+<div class="modal fade" id="btnEditerCommentaire" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <form method="post" action="../controlleur/controlleurTableaudebord.php">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                <h5 class="modal-title"><i class="fas fa-list"></i> Gérer Le commentaire de ce rendez-vous</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        Commentaire : <input class="form-control" id="voirCommentaireUti" disabled>              
+                    </div>
+                    <div class="form-group pt-3">
+                        Remplacer le commentaire : <input type="text" name="commentaire" class="form-control">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="hidden" name="action" value="editCommentaireModal">
+                    <input type="hidden" name="id_reservation" id="reservation_id">
+                    <div class="col-5">
+                        <a href="#" id="btnCloseRetirerRdv" data-bs-dismiss="modal" type="submit" class="btn btn-secondary btn-sm w-100"><i class="fa fa-times"></i> Annuler</a>
+                    </div>
+                    <div class="col-6">
+                        <button type="submit" class="btn btn-success btn-sm text-white" style="width: 90%;" id="btnSubmitEditerCommentaire" data-loading-text="<i class='fa fa-spinner fa-pulse'></i> Enregistrement en cours">Enregistrer <i class="fa fa-save"></i></button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Modale pour voir le commentaire -->
+<div class="modal fade" id="btnVoirCommentaire" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-primary text-white">
+            <h5 class="modal-title"><i class="fas fa-list"></i> Le commentaire de ce rendez-vous</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    Commentaire : <input class="form-control" id="voirCommentaire" disabled>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="col-12">
+                    <a href="#" data-bs-dismiss="modal" type="submit" class="btn btn-secondary btn-sm w-100"><i class="fa fa-times"></i> Fermer</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modale pour rétirer un rendez-vous -->
+<div class="modal fade" id="btnRetirerRdv" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <!-- <form method="post" action="#" id="formDeleteCommentaireMairie"> -->
+            <div class="modal-content">
+                <div class="modal-header bg-warning text-white">
+                <h5 class="modal-title"><i class="fa fa-times"></i> Retirer ce rendez-vous</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        Vous êtes sur le point de retirer ce rendez-vous. Il sera libéré pour un autre utilisateur.
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="col-5">
+                        <a href="#" id="btnCloseRetirerRdv" data-bs-dismiss="modal" type="submit" class="btn btn-secondary btn-sm w-100"><i class="fa fa-times"></i> Annuler</a>
+                    </div>
+                    <div class="col-6">
+                        <button type="submit" class="btn btn-warning btn-sm text-white" style="width: 90%;" id="btnSubmitRetirerRdv" data-loading-text="<i class='fa fa-spinner fa-pulse'></i> Enregistrement en cours">Retirer <i class="fas fa-arrow-left"></i></button>
+                    </div>
+                </div>
+            </div>
+        <!-- </form> -->
+    </div>
+</div>
+
 <!-- Modale de prise de rendez-vous pour les ventouses (type = 1) -->
 <div class="modal fade" id="rendezvousVentouse" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -473,15 +497,15 @@ if($_SESSION["email"]) {
                             ?>
                         </select>
                     </div>
-                    <div class="modal-footer">
-                        <div class="col-5">
-                            <a href="#" data-bs-dismiss="modal" type="submit" class="btn btn-secondary btn-sm w-100"><i class="fa fa-times"></i> Annuler</a>
-                        </div>
-                        <div class="col-6">
-                            <input type="hidden" name="action" value="prendreRendezvousModal">
-                            <input type="hidden" name="id_utilisateur" value="<?= $utilisateur[0]->id ?>">
-                            <button type="submit" class="btn btn-success btn-sm" style="width: 90%;" id="btnEditProfil" data-loading-text="<i class='fa fa-spinner fa-pulse'></i> Enregistrement en cours">Enregistrer <i class="fa fa-save"></i></button>
-                        </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="col-5">
+                        <a href="#" data-bs-dismiss="modal" type="submit" class="btn btn-secondary btn-sm w-100"><i class="fa fa-times"></i> Annuler</a>
+                    </div>
+                    <div class="col-6">
+                        <input type="hidden" name="action" value="prendreRendezvousModal">
+                        <input type="hidden" name="id_utilisateur" value="<?= $utilisateur[0]->id ?>">
+                        <button type="submit" class="btn btn-success btn-sm" style="width: 90%;" id="btnEditProfil" data-loading-text="<i class='fa fa-spinner fa-pulse'></i> Enregistrement en cours">Enregistrer <i class="fa fa-save"></i></button>
                     </div>
                 </div>
             </div>
@@ -518,15 +542,15 @@ if($_SESSION["email"]) {
                             ?>
                         </select>
                     </div>
-                    <div class="modal-footer">
-                        <div class="col-5">
-                            <a href="#" data-bs-dismiss="modal" type="submit" class="btn btn-secondary btn-sm w-100"><i class="fa fa-times"></i> Annuler</a>
-                        </div>
-                        <div class="col-6">
-                            <input type="hidden" name="action" value="prendreRendezvousModal">
-                            <input type="hidden" name="id_utilisateur" value="<?= $utilisateur[0]->id ?>">
-                            <button type="submit" class="btn btn-success btn-sm" style="width: 90%;" id="btnEditProfil" data-loading-text="<i class='fa fa-spinner fa-pulse'></i> Enregistrement en cours">Enregistrer <i class="fa fa-save"></i></button>
-                        </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="col-5">
+                        <a href="#" data-bs-dismiss="modal" type="submit" class="btn btn-secondary btn-sm w-100"><i class="fa fa-times"></i> Annuler</a>
+                    </div>
+                    <div class="col-6">
+                        <input type="hidden" name="action" value="prendreRendezvousModal">
+                        <input type="hidden" name="id_utilisateur" value="<?= $utilisateur[0]->id ?>">
+                        <button type="submit" class="btn btn-success btn-sm" style="width: 90%;" id="btnEditProfil" data-loading-text="<i class='fa fa-spinner fa-pulse'></i> Enregistrement en cours">Enregistrer <i class="fa fa-save"></i></button>
                     </div>
                 </div>
             </div>
@@ -563,15 +587,15 @@ if($_SESSION["email"]) {
                             ?>
                         </select>
                     </div>
-                    <div class="modal-footer">
-                        <div class="col-5">
-                            <a href="#" data-bs-dismiss="modal" type="submit" class="btn btn-secondary btn-sm w-100"><i class="fa fa-times"></i> Annuler</a>
-                        </div>
-                        <div class="col-6">
-                            <input type="hidden" name="action" value="prendreRendezvousModal">
-                            <input type="hidden" name="id_utilisateur" value="<?= $utilisateur[0]->id ?>">
-                            <button type="submit" class="btn btn-success btn-sm" style="width: 90%;" id="btnEditProfil" data-loading-text="<i class='fa fa-spinner fa-pulse'></i> Enregistrement en cours">Enregistrer <i class="fa fa-save"></i></button>
-                        </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="col-5">
+                        <a href="#" data-bs-dismiss="modal" type="submit" class="btn btn-secondary btn-sm w-100"><i class="fa fa-times"></i> Annuler</a>
+                    </div>
+                    <div class="col-6">
+                        <input type="hidden" name="action" value="prendreRendezvousModal">
+                        <input type="hidden" name="id_utilisateur" value="<?= $utilisateur[0]->id ?>">
+                        <button type="submit" class="btn btn-success btn-sm" style="width: 90%;" id="btnEditProfil" data-loading-text="<i class='fa fa-spinner fa-pulse'></i> Enregistrement en cours">Enregistrer <i class="fa fa-save"></i></button>
                     </div>
                 </div>
             </div>
@@ -606,14 +630,14 @@ if($_SESSION["email"]) {
                             </div>
                         </div>
                     </div>
-                    <div class="modal-footer">
-                        <div class="col-5">
-                            <a href="#" data-bs-dismiss="modal" type="submit" class="btn btn-secondary btn-sm w-100"><i class="fa fa-times"></i> Annuler</a>
-                        </div>
-                        <div class="col-6">
-                            <input type="hidden" name="action" value="ajoutRendezvousModal">
-                            <button type="submit" class="btn btn-success btn-sm" style="width: 90%;" id="btnEditProfil" data-loading-text="<i class='fa fa-spinner fa-pulse'></i> Enregistrement en cours">Enregistrer <i class="fa fa-save"></i></button>
-                        </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="col-5">
+                        <a href="#" data-bs-dismiss="modal" type="submit" class="btn btn-secondary btn-sm w-100"><i class="fa fa-times"></i> Annuler</a>
+                    </div>
+                    <div class="col-6">
+                        <input type="hidden" name="action" value="ajoutRendezvousModal">
+                        <button type="submit" class="btn btn-success btn-sm" style="width: 90%;" id="btnEditProfil" data-loading-text="<i class='fa fa-spinner fa-pulse'></i> Enregistrement en cours">Enregistrer <i class="fa fa-save"></i></button>
                     </div>
                 </div>
             </div>
@@ -627,7 +651,7 @@ if($_SESSION["email"]) {
         <form method="post" action="../controlleur/controlleurTableaudebord.php">
             <div class="modal-content">
                 <div class="modal-header bg-danger text-white">
-                    <h5 class="modal-title"><i class="fa-sharp fa-solid fa-calendar-check"></i> Supprimer rdv de façon définitive</h5>
+                    <h5 class="modal-title"><i class="fas fa-cross"></i> Supprimer rdv de façon définitive</h5>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -650,15 +674,15 @@ if($_SESSION["email"]) {
                             ?>
                         </select>
                     </div>
-                    <div class="modal-footer">
-                        <div class="col-5">
-                            <a href="#" data-bs-dismiss="modal" type="submit" class="btn btn-secondary btn-sm w-100"><i class="fa fa-times"></i> Annuler</a>
-                        </div>
-                        <div class="col-6">
-                            <input type="hidden" name="action" value="supprimerRendezvousModal">
-                            <input type="hidden" name="id_utilisateur" value="<?= $utilisateur[0]->id ?>">
-                            <button type="submit" class="btn btn-danger btn-sm" style="width: 90%;" id="btnEditProfil" data-loading-text="<i class='fa fa-spinner fa-pulse'></i> Enregistrement en cours">Supprimer <i class="fa fa-save"></i></button>
-                        </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="col-5">
+                        <a href="#" data-bs-dismiss="modal" type="submit" class="btn btn-secondary btn-sm w-100"><i class="fa fa-times"></i> Annuler</a>
+                    </div>
+                    <div class="col-6">
+                        <input type="hidden" name="action" value="supprimerRendezvousModal">
+                        <input type="hidden" name="id_utilisateur" value="<?= $utilisateur[0]->id ?>">
+                        <button type="submit" class="btn btn-danger btn-sm" style="width: 90%;" id="btnEditProfil" data-loading-text="<i class='fa fa-spinner fa-pulse'></i> Enregistrement en cours">Supprimer <i class="fa fa-save"></i></button>
                     </div>
                 </div>
             </div>
@@ -739,7 +763,6 @@ if($_SESSION["email"]) {
         </form>
     </div>
 </div>
-
 </body>
 </html>
 
