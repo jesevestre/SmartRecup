@@ -3,7 +3,7 @@ function connexion($HOSTNAME, $DBNAME, $USER, $PASSWORD) {
 	$pdo = null;
 	
 	try{
-	$pdo = new PDO('mysql:host='.$HOSTNAME.';dbname='.$DBNAME.'', $USER, $PASSWORD);
+	$pdo = new PDO('mysql:host='.$HOSTNAME.';dbname='.$DBNAME.';charset=utf8', $USER, $PASSWORD);
 
 	$pdo -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 	}
@@ -20,7 +20,7 @@ function select($pdo, $query) {
 	
 	try{
 		$pdos = $pdo->query($query);
-		$tab = $pdos->fetchAll(PDO::FETCH_ESSOC);
+		$tab = $pdos->fetchAll(PDO::FETCH_ASSOC);
 		$pdos->closeCursor();
 		return $tab;
 	}

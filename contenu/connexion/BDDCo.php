@@ -1,6 +1,6 @@
 <?php
-	define ("HOSTNAME", "ftpperso.free.fr");
-	define ("DBNAME", "cempolytechnique");
-	define ("USER", "cempolytechnique");
-	define ("PASSWORD", "c9-ZpAWe*Kfk7m$");
+	define ("HOSTNAME", "xnsmari129.mysql.db");
+	define ("DBNAME", "xnsmari129");
+	define ("USER", "xnsmari129");
+	define ("PASSWORD", "Maxjb20011995");
 ?>

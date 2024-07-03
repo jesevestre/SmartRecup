@@ -1,36 +1,73 @@
-// Gestion des mots de passe
-function verifMdp() {
-    var mdp = document.getElementById("mdp").value;
-    var mdpRepete = document.getElementById("mdpRepete").value;
-    var mdpRepeteLength = mdpRepete.length;
-    var texte = "";
+// Gestion du bouton S'inscrire
+function debloquerSinscrire() {
+    var BtnInscription = document.getElementById("BtnInscription");
 
-    // Si le mdp de vérification n'est pas correct
-    if (mdp != mdpRepete) {
-        texte = ('<div id="divMessage" style="display: block" class="alert alert-warning text-center small"><i class="fa fa-exclamation-triangle"></i> Le mot de passe de vérification n\'est pas correct.</div>');
+    BtnInscription.classList.remove("disabled");
+}
 
-        document.getElementById('texteErreur').innerHTML = texte;
-        inscription.classList.add("disabled");
+// Gestion des caractères à mettre en majuscules
+function premierCaractereMaj(texte) {
+    let mots = texte.toLowerCase().split(" ");
+    let array = [];
+    
+    mots.forEach(mot => {
+        let premiereLettre = mot.charAt(0).toUpperCase();
+        let remplacement = mot.replace(mot.charAt(0), premiereLettre);
+        array.push(remplacement);
+    });
 
-        telephone.classList.remove("pb-5");
-        telephone.classList.add("pb-1");
+    texte = array.join(" ");
 
-    // Si le mdp de vérification  est trop court
-    } else if (mdpRepeteLength < 5) {
-        texte = ('<div id="divMessage" style="display: block" class="alert alert-warning text-center small"><i class="fa fa-exclamation-triangle"></i> Le mot de passe est trop court.</div>');
+    mots = texte.split("-");
+    array = [];
+    
+    mots.forEach(mot => {
+        premiereLettre = mot.charAt(0).toUpperCase();
+        remplacement = mot.replace(mot.charAt(0), premiereLettre);
+        array.push(remplacement);
+    });
 
-        document.getElementById('texteErreur').innerHTML = texte;
-        inscription.classList.add("disabled");
+    return array.join("-");
+}
 
-        telephone.classList.remove("pb-5");
-        telephone.classList.add("pb-1");
+// Activation du spinner si les champs nécessaires sont renseignés
+function clickContact() {
+    var email = document.getElementById("email").value;
+    var prenom = document.getElementById("prenom").value;
+    var nom = document.getElementById("nom").value;
+    var cgu = document.getElementById("cgu").checked;
 
-    // Si le mdp de vérification est correct on libère me bouton pour s'inscrire
-    } else {
-        document.getElementById('texteErreur').innerHTML = texte;
-        inscription.classList.remove("disabled");
-
-        telephone.classList.remove("pb-1");
-        telephone.classList.add("pb-5");
+    // Si les champs sont remplis
+    if (email != "" && prenom != "" && nom != "" && cgu == true) {
+        $('#BtnInscription i')
+            .removeClass('fa-sharp fa-solid fa-arrow-right')
+            .addClass('fa fa fa-spinner')
+            .addClass('fa-spin');
     }
 }
+
+// Gestion des spinners
+$('#retour').click(function(){
+    $('#retour i')
+        .removeClass('fa-sharp fa-solid fa-arrow-left')
+        .addClass('fa fa-spinner')
+        .addClass('fa-spin');
+});
+$('#BtnConnexion').click(function(){
+    var emailConnexion = document.getElementById("emailConnexion").value;
+    var mdpConnexion = document.getElementById("mdpConnexion").value;
+
+    if (emailConnexion != "" && mdpConnexion != "") {
+        $('#BtnConnexion i')
+            .removeClass('fa-sharp fa-solid fa-arrow-right')
+            .addClass('fa fa-spinner')
+            .addClass('fa-spin');
+    }
+});
+
+$('#retour2').click(function(){
+    $('#retour2 i')
+        .removeClass('fa-sharp fa-solid fa-arrow-left')
+        .addClass('fa fa-spinner')
+        .addClass('fa-spin');
+});

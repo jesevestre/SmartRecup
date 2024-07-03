@@ -1,153 +1,300 @@
+:root {
+    --background-general: #f8f7f5;
+}
+
 ::before, ::after {
+    box-sizing: boder-box;
     margin: 0;
     padding: 0;
 }
 
 body {
-    background: #333;
-    font-family: Arial, Helvetica, sans-serif;
-    height: 98.3vh;
+    position: relative;
+    background-color: var(--background-general) !important;
     background-repeat: no-repeat;
     background-size: cover;
-    position: relative; /*Problématique pour passer en responsive*/
     overflow-x: hidden;
-    width: 97.5%;
+    margin: 0;
+    padding: 0;
 }
 
-.container-first {
-    position: absolute;
-    top: 15%;
-    left: 5%;
+/* Forme des pages */
+.cadrage {
+    position: relative;
+    display: block;
+    padding-left: 5% !important;
+    padding-right: 5% !important;
 }
 
-/* Page formulaires */
-.cadrage1 {
-    padding-top: 15%;
-}
-
-.cadrage2 {
-    background-color: #333;
-    opacity: 95%;
-    border-radius: 8px;
-    z-index: 1 !important;
-}
-
-.cadrage3 {
-    padding-top: 5%;
-}
-
-.cadrageMessage {
-    width: 90%;
-    padding-top: 5%;
-}
-
-/* Titre */
-h1 {
-    text-align: center !important;
-    outline: none;
-    font-size: 10%;
-
-    color: #FFF !important;
-    font-weight: bold;
-    z-index: 2 !important;
-}
-
-h2 {
-    text-align: center !important;
-    outline: none;
-    font-size: 5%;
-
-    color: #FFF !important;
-    font-weight: bold;
-    z-index: 2 !important;
-}
-
-.btn-decouvrir {
-    background-color: red !important;
-}
-
-/* Page inscription */
-.legendegenre {
-    font-size: 110%;
-    color: white;
-}
-
-/* Page découvrir */
-.iframe {
+.photo-img {
+    width: 590px;
     display: block;
     margin-left: auto;
     margin-right: auto;
-
-    width: 100%;
+    margin-bottom: 10px;
 }
-
+.avec_zoom:hover {
+    transition: transform .5s;
+    -ms-transform: scale(1.03); /* IE 9 */
+    -webkit-transform: scale(1.03); /* Safari 3-8 */
+    transform: scale(1.03);
+    cursor: pointer;
+}
+.photo-interet {
+    width: 340px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10px;
+}
+.photo-prestations {
+    width: 100%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10px;
+}
 .justifie {
     text-align: justify;
-    color: white;
+    color: #333;
+}
+h3 {
+    margin-bottom: 0px;
+    font-size: 40px !important;
+    color: #333;
+}
+h4 {
+    color: #777;
+}
+.a_titre_et_texte {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-decoration: none;
+}
+.a_titre_et_texte_prestations {
+    text-decoration: none;
+}
+.titre_h4 {
+    font-size: 15px !important;
+    text-align: center;
+}
+.titre_h4_prestations {
+    font-size: 18px;
+    margin-top: 8px;
+    margin-bottom: -4px;
+}
+.texte_p {
+    color: #000;
+}
+.retirer_espace_balise_b {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+/* Page inscription */
+.logo-img {
+    width: 90%;
+    padding-top: 40%;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: center;
+}
+.verticale_separation {
+    border-right: solid 1px;
+    color: #AAA;
+}
+.horizontale_separation {
+    width: 95%;
+    height: 1px;
+    margin: auto;
+    background-color: #777;
+    border: none;
+}
+.legendeCgu {
+    font-size: 110%;
+}
+.legendeCguInput {
+    border: 1px solid #555 !important;
+}
+.legendeCaptcha {
+    margin: 0 auto;
+    width: 304px;
+}
+.centrer {
+    text-align: center;
 }
 
 /* Page tableau de bord */
+.cadrageMessage {
+    padding-top: 2%;
+}
 #divMessage2 {
     display: none; 
     padding-top: 71px;
 }
+.voir_border {
+    border: solid 1px;
+    color: #666;
+    border-radius: 7px;
+}
+.a_icone-color {
+    margin-left: 10px;
+}
+.icone-color {
+    color: #444;
+}
 
 /* Page modale */
-.legendegenreModaleFemme {
-    margin-left: 80px;
-}
-
-.legendegenreModaleHomme {
-    margin-left: 120px;
-}
-
-.InputVentouseEtMassage {
-    cursor: grab;
-}
-
 .form-control {
     cursor: grab;
 }
-
 .cursorGrab {
     cursor: grab;
 }
-
-.legendeVentouse {
+.btnMassage {
     margin-left: 10px;
 }
-
-.legendeMassage {
+.btnVentouse {
     margin-left: 50px;
 }
 
-.legendeVentouseMassage {
-    margin-left: 50px;
+/* Modification bouton bootstrap */
+.btn-primary {
+    background-color: #AAA !important;
+    border-color: #AAA !important;
+    color: #333 !important;
+    font-weight: 600 !important;
 }
+.primary {
+    background-color: #AAA !important;
+}
+.btn-success {
+    background-color: #555 !important;
+    border-color: #555 !important;
+    color: #FFF !important;
+    font-weight: 600 !important;
+}
+.success {
+    background-color: #555 !important;
+}
+.btn-warning {
+    background-color: #7985B1 !important;
+    border-color: #7985B1 !important;
+    color: #FFF !important;
+    font-weight: 600 !important;
+}
+.warning {
+    background-color: #7985B1 !important;
+}
+.btn-secondary {
+    background-color: #282c5fb3 !important;
+    border-color: #282c5fb3 !important;
+    font-weight: 600 !important;
+}
+.secondary {
+    background-color: #282c5fb3 !important;
+}
+.btn-danger {
+    background-color: #6c757d !important;
+    border-color: #6c757d !important;
+    font-weight: 600 !important;
+}
+.danger {
+    background-color: #6c757d !important;
+}
+
 /* Footer */
 .footer {
     position: absolute;
-    width: 102.5%;
-    bottom: -22px;
+    bottom: 0; 
+    left: 0; 
+    right: 0;
+    text-align: center;
     background-color: #444;
+    color: white;
 }
 
-/* Accessiblité mobile/tablette/PC */
+/* Accessiblité mobile / tablette */
+@media screen and (max-width: 1400px) {
+    .photo-img {
+        width: 500px;
+    }
+    .photo-interet {
+        width: 290px;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .photo-img {
+        width: 420px;
+    }
+    .photo-interet {
+        width: 240px;
+    }
+}
+
 @media screen and (max-width: 1000px) {
-    .cadrage1 {
-        padding-top: 35%;
+    .photo-img {
+        width: 315px;
     }
-    .cadrage2 {
-        width: 90% !important;
-    }
-    .cadrage3 {
-        padding-top: 20%;
-    }
-    .cadrage4 {
-        padding-top: 3% !important;
+    .photo-interet {
+        width: 185px;
     }
     #divMessage2 {
-        display: none; 
-        padding-top: 92px;
+        display: none;
+    }
+    .logo-img {
+        padding-top: 100%;
+    }
+}
+
+@media screen and (max-width: 765px) {
+    .cadrage {
+        width: 90% !important;
+    }
+    h3 {
+        font-size: 30px !important;
+    }
+    .photo-img {
+        width: 330px;
+    }
+    .photo-interet {
+        width: 260px;
+    }
+    .tarifsHidden {
+        display: none;
+    }
+    .footer {
+        width: 102%;
+    }
+    .logo-img {
+        width: 50%;
+        padding-top: 0%;
+    }
+    .verticale_separation {
+        border-right: none;
+    }
+    .a_icone-color {
+        margin-left: -20px;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .photo-interet {
+        width: 190px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .photo-img {
+        width: 250px;
+    }
+    .photo-interet {
+        width: 160px;
+    }
+    .footer {
+        width: 103%;
     }
 }

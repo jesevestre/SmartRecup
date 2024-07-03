@@ -1,39 +1,42 @@
-const titreSpans = document.querySelectorAll('h1 span');
-const btns = document.querySelectorAll('.btn-first');
-const logo = document.querySelectorAll('.logo');
-const switch1 = document.querySelector('.switch-mode');
-const medias = document.querySelectorAll('.bulle');
-const l1 = document.querySelector('.l1');
-const l2 = document.querySelector('.l2');
+// Ouverture de la modale Offre de bienvenue
+// if(document.cookie.indexOf('PHPSESSID') == -1) {
+//     setTimeout(() => {
+//         ouvrirModaleOffre();
+//     }, 2000);
+// }
+// function ouvrirModaleOffre() {
+//     Swal.fire({
+//         title: 'OFFRE DE BIENVENUE',
+//         text: 'Votre première séance à seulement 14,90€, alors n\'hésitez plus !',
+//         imageWidth: 300,
+//         imageHeight: 400,
+//         confirmButtonText: 'Fermer',
+//         showClass: {
+//             popup: 'slow-show',
+//             confirmButton: 'custom-confirm-button',
+//         },
+//     });
+// }
 
-window.addEventListener('load', () => {
-    const TL = gsap.timeline({paused: true});
+/* Effet visuel en arrivant sur la page */ 
+document.addEventListener('DOMContentLoaded', function() {
+    const slogan = document.getElementById('slogan-div');
+    slogan.classList.add('move-in');
+});
 
-    TL
-    .staggerFrom(titreSpans, 1, {top: -50, opacity: 0, ease: "power2.out"}, 0.6)
-    .staggerFrom(btns, 1, {opacity:0, ease: "power2.out"}, 0.3, '-=1')
-    .from(l1, 1, {width: 0, ease: "power2.out"}, '-=2')
-    .from(l2, 1, {width: 0, ease: "power2.out"}, '-=2')
-    .from(logo, 0.4, {transform: "scale(0)", ease: "power2.out"}, '-=2')
-    .from(switch1, 0.4, {transform: "scale(0)", ease: "power2.out"}, '-=2')
-    .staggerFrom(medias, 0.8, {right: -200, ease: "power2.out"}, 0.3, '-=1')
-
-    TL.play();
-})
-
-/* Les modes de constrastes */
-function dark() {
-    var a = document.getElementById("click");
-
-    if(a.checked == true){
-        document.documentElement.style.setProperty("--background", "rgba(60, 60, 60, 0.6)");
-        document.documentElement.style.setProperty("--background-btn", "rgba(60, 60, 60, 0.9)");
-        document.documentElement.style.setProperty("--trait", "#222");
-
-    } else {
-        document.documentElement.style.setProperty("--background", "transparent");
-        document.documentElement.style.setProperty("--background-btn", "rgba(60, 60, 100, 0.5)");
-        document.documentElement.style.setProperty("--trait", "#F1F1F1");
-
-    }
+/* Modale pour ouvrir le code Snapchat */
+function ouvrirModaleSnapchat() {
+    Swal.fire({
+        //   title: 'Titre de l\'alerte',
+        text: 'Scannez-moi ou copiez maxx_thiel pour m\'ajouter',
+        imageUrl: 'contenu/images/QRCode_Snapchat.png',
+        imageWidth: 300,
+        imageHeight: 400,
+        imageAlt: 'Snapcode de Maxime Thiel',
+        confirmButtonText: 'Fermer',
+        showClass: {
+            popup: 'slow-show',
+            confirmButton: 'custom-confirm-button'
+        },
+    });
 }
