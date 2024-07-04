@@ -1,0 +1,489 @@
+:root {
+    --background-general: #f8f7f5;
+}
+
+/* Contenu du bandeau message */
+.container-message {
+    text-align: center;
+}
+.message-div {
+    width: 98%;
+    color: #777;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: -5px;
+    border-bottom: solid 1px;
+}
+.message-p {
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+
+/* Contenu de l'en tête */
+.container-entete {
+    display: block;
+    padding-bottom: 25px;
+}
+
+.logo-div {
+    text-align: left;
+    overflow: hidden;
+    padding-left: 3%;
+    padding-top: 1%;
+}
+.logo {
+    width: 120px;
+    cursor: pointer;
+}
+
+.titre-div {
+    text-align: center;
+    margin-top: -100px;
+    margin-bottom: 20px;
+    cursor: default;
+}
+h1 {
+    font-size: 40px;
+    color: #555;
+}
+
+.medias-div {
+    text-align: right;
+    list-style-type: none;
+    position: absolute;
+    right: 3.3%;
+    margin-top: -2%;
+    transform: translateY(-50%);
+    display: flex;
+    background-color: transparent;
+}
+.bulle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin: 7px !important;
+    border: 1px solid #F1F1F1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0;
+    background-color: var(--background-general);
+    cursor: pointer;
+    position: relative;
+}
+.bulle i {
+    color: #444;
+}
+.medias {
+    width: 40px;
+    height: 40px;
+}
+
+.menu-div {
+    text-align: center;
+}
+.bouton-menu {
+    text-align: center;
+    color: #444;
+    background-color: var(--background-general);
+    border: none;
+    margin: 4px 2px;
+    outline: none;
+    font-size: 16px;
+    cursor: pointer;
+    text-decoration: none;
+}
+.sous-ligne {
+    text-decoration: underline;
+}
+.bouton-menu:hover {
+    text-decoration: underline !important;
+    color: #444;
+}
+
+/* Contenu du corps */
+.container-corps {
+    position: relative;
+    height: 62rem;
+}
+.landscape-div {
+    position: relative;
+    z-index: 0;
+}
+.landscape {
+    position: absolute;
+    width: 100%;
+}
+.pour_grande_taille {
+    display: none;
+}
+.pour_petite_taille {
+    display: none;
+}
+
+.slogan-div {
+    position: relative;
+    text-align: center;
+    padding-top: 9%;
+    z-index: 1;
+
+    bottom: -60px;
+    transition: bottom 1.5s ease;
+}
+.slogan-div.move-in {
+    bottom: 0;
+}
+
+.slogan-div-evenements {
+    position: relative;
+    text-align: center;
+    padding-bottom: 15%;
+    bottom: -40px;
+}
+.slogan-div-evenements.move-in {
+    bottom: 0;
+}
+
+.slogan-h2 {
+    font-size: 380%;
+    color: #FFF;
+    font-weight: 400;
+    padding-bottom: 25px;
+    cursor: default;
+}
+.slogan-button {
+    border: 1px solid var(--background-general);
+    padding: 1.1% 2.8rem;
+    background-color: hsl(0, 0%, 27%, 50%);
+    color: #FFF !important;
+    text-decoration: none;
+    font-size: 115%;
+    font-weight: 600;
+    cursor: pointer;
+}
+.slogan-button:hover {
+    border: 2.5px solid var(--background-general);
+}
+
+/* Contenu du corps sous image */
+.container-second {
+    position: relative;
+    display: block;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+.a_titre_et_texte_accueil {
+    text-decoration: none;
+}
+.titre_h4_accueil {
+    font-size: 18px;
+    margin-top: 8px;
+    margin-bottom: -4px;
+}
+
+.photo-img-accueil {
+    width: 95%;
+    margin-right: 15px;
+    cursor: pointer;
+}
+.photo-img-accueil:hover {
+    transition: transform .5s;
+    -ms-transform: scale(1.03); /* IE 9 */
+    -webkit-transform: scale(1.03); /* Safari 3-8 */
+    transform: scale(1.03);
+}
+.php-img-2 {
+    width: 100%;
+    margin-right: 15px;
+    cursor: pointer;
+}
+
+/* Footer */
+.footer {
+    position: relative;
+    width: 100%;
+
+    vertical-align: middle;
+    left: 0px;
+    right: 0px;
+
+    text-align: center;
+    background-color: #444;
+    color: white;
+}
+
+/* Modale Snapchat */
+.swal2-confirm {
+    background-color: #555 !important;
+    width: 90px !important;
+    height: 35px;
+    line-height: 10px;
+    text-align: center;
+}
+.slow-show {
+    animation: fadeIn 2s forwards;
+}
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/* Accessiblité mobile / tablette */
+@media screen and (max-width: 2400px) {
+    .container-corps {
+        height: 58rem;
+    }
+}
+
+@media screen and (max-width: 2300px) {
+    .container-corps {
+        height: 55rem;
+    }
+}
+
+@media screen and (max-width: 2200px) {
+    .container-corps {
+        height: 52rem;
+    }
+}
+
+@media screen and (max-width: 2100px) {
+    .container-corps {
+        height: 50rem;
+    }
+}
+
+@media screen and (max-width: 2000px) {
+    .container-corps {
+        height: 48rem;
+    }
+}
+
+@media screen and (max-width: 1900px) {
+    .container-corps {
+        height: 45rem;
+    }
+}
+
+@media screen and (max-width: 1800px) {
+    .container-corps {
+        height: 43rem;
+    }
+}
+
+@media screen and (max-width: 1700px) {
+    .container-corps {
+        height: 41rem;
+    }
+}
+
+@media screen and (max-width: 1600px) {
+    .container-corps {
+        height: 38rem;
+    }
+}
+
+@media screen and (max-width: 1500px) {
+    .container-corps {
+        height: 36rem;
+    }
+}
+
+@media screen and (max-width: 1400px) {
+    .container-corps {
+        height: 34rem;
+    }
+}
+
+@media screen and (max-width: 1300px) {
+    .container-corps {
+        height: 31rem;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .container-corps {
+        height: 28rem;
+    }
+    .slogan-div {
+        padding-top: 7%;
+    }
+}
+
+@media screen and (max-width: 1100px) {
+    .container-corps {
+        height: 26rem;
+    }
+}
+
+@media screen and (max-width: 955px) {
+    .medias-div {
+        margin-top: -4%;
+        right: 2%;
+    }
+    .slogan-div {
+        padding-top: 10%;
+    }
+    .slogan-h2 {
+        font-size: 350%;
+    }
+    .slogan-button {
+        padding: 1.5% 2rem;
+        font-size: 100%;
+    }
+    .container-corps {
+        height: 29rem;
+    }
+    .pour_immense_taille {
+        display: none;
+    }
+    .pour_grande_taille {
+        display: block;
+    }
+    .pour_petite_taille {
+        display: none;
+    }
+    .button-banniere {
+        margin-left: 10%;
+    }
+    .button-banniere a {
+        margin-left: -50%;
+    }
+}
+
+@media screen and (max-width: 875px) {
+    .container-corps {
+        height: 26rem;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .container-entete {
+        padding-bottom: 10px;
+    }
+    .bulle {
+        margin: 0px !important;
+    }
+    .logo {
+        width: 80px;
+    }
+    .titre-div {
+        margin-top: -80px;
+    }
+    h1 {
+        padding-top: 15px;
+        font-size: 30px;
+    }
+    .menu-div {
+        padding-top: 15px;
+    }
+    .slogan-h2 {
+        font-size: 280%;
+    }
+    .container-corps {
+        height: 24rem;
+    }
+    .invisible-banniere-text {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .container-corps {
+        height: 21rem;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .message-p {
+        font-size: 85%;
+    }
+    .container-corps {
+        height: 18rem;
+    }
+    .slogan-h2 {
+        font-weight: 600;
+        font-size: 240%;
+        padding-bottom: 20px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .logo {
+        width: 60px;
+    }
+    .titre-div {
+        margin-top: -60px;
+    }
+    .medias-div {
+        margin-top: -6%;
+    }
+    .bulle {
+        margin: -4px !important;
+    }
+    .fa-2x {
+        font-size: 1.5em !important;
+    }
+    .slogan-div {
+        padding-top: 15%;
+    }
+    .slogan-button {
+        padding: 1.5% 1.5rem;
+    }
+    .container-corps {
+        height: 21rem;
+    }
+    .pour_immense_taille {
+        display: none;
+    }
+    .pour_grande_taille {
+        display: none;
+    }
+    .pour_petite_taille {
+        display: block;
+    }
+    h3 {
+        font-size: 30px;
+    }
+    .slogan-div-evenements {
+        padding-bottom: 25%;
+    }
+}
+
+@media screen and (max-width: 460px) {
+    .message-p {
+        font-size: 75%;
+    }
+    .titre-div {
+        margin-top: -55px;
+    }
+    h1 {
+        font-size: 20px;
+    }
+    .medias-div {
+        margin-top: -8.5%;
+    }
+    .menu-div {
+        padding-top: 0px;
+    }
+    .slogan-h2 {
+        font-size: 180%;
+        padding-bottom: 10px;
+    }
+    .bouton-menu {
+        font-size: 85%;
+    }
+    .container-corps {
+        height: 19rem;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .container-corps {
+        height: 16rem;
+    }
+}
