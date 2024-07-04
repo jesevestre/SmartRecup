@@ -110,7 +110,7 @@ $parametrages = $req->fetchAll(PDO::FETCH_OBJ);
 if($parametrages[2]->actif == 1){
 ?>
     <div class="container-second">
-        <h3>Les événements</h3>
+        <h3>Événement</h3>
 
         <div id="slogan-div" class="slogan-div-evenements">
             <a class="slogan-button" href="vue/evenement.php" style="border-color: #7985B1;" class="button button--secondary"><?php echo $parametrages[3]->nom ?></a>
