@@ -309,7 +309,7 @@ if($_SESSION["email"]) {
                                                     } else {
                                                         $iconeCommentaire = "fas fa-comment";
                                                     }
-                                                    $commentaireClient = str_replace("'", " ", $reservationAdministrateur->commentaireClient);
+                                                    $commentaireClient = str_replace("'", " ", $reservationUti->commentaireClient);
                                                 ?>
 
                                                     <a class="btn btn-success mx-auto w-100 btnEditerCommentaireClient" onclick="javascript:editer_commentaire('<?= $commentaireClient ?>', '<?= $reservationUti->reservation_id ?>');"><i class="<?= $iconeCommentaire ?>"></i></a>
@@ -703,7 +703,7 @@ if($_SESSION["email"]) {
                 <div class="modal-body">
                     <div class="form-group">
                         Commentaire visible par le praticien : 
-                        <input type="text" class="form-control" name="commentaireClient"id="commentaireClient" placeholder="Ecrivez ici votre commentaire">              
+                        <input type="text" class="form-control" name="commentaireClient" id="commentaireClient" placeholder="Ecrivez ici votre commentaire">              
                     </div>
                 </div>
                 <div class="modal-footer">

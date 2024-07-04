@@ -65,15 +65,10 @@ $('#btnCloseRetirerRdvUti').click(function (e) {
 });
 
 // Commentaire des rendez-vous 
-function voir_commentaire(commentaireClient) {
-    $('#btnVoirCommentaire').modal('show');
-    $('#commentaireClient').val(commentaireClient);
-}
-
 function editer_commentaire(commentaireClient, reservation_id) {
     $('#btnEditerCommentaireClient').modal('show');
-    $('#reservation_id').val(reservation_id);
     $('#commentaireClient').val(commentaireClient);
+    $('#reservation_id').val(reservation_id);
 }
 
 // Gestion du changement du mot de passe
