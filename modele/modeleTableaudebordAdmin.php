@@ -135,7 +135,7 @@ function reservationPourClient($pdo, $id_utilisateur, $commentaireClient, $comme
     }
 }
 
-function parametrages($pdo, $option_email_1, $option_email_2, $option_evenement, $nom_evenement) {
+function parametrages($pdo, $option_email_1, $option_email_2, $option_evenement, $titre_evenement, $paragraphe_evenement) {
     $sql = "UPDATE Parametrages SET actif = ? WHERE id = 1";
     $req = $pdo->prepare($sql);
     $req->execute(array($option_email_1));
@@ -148,9 +148,14 @@ function parametrages($pdo, $option_email_1, $option_email_2, $option_evenement,
     $req = $pdo->prepare($sql);
     $req->execute(array($option_evenement));
 
-    $sql = "UPDATE Parametrages SET nom = ? WHERE id = 4";
+    $sql = "UPDATE Parametrages SET champ_texte = ? WHERE id = 4";
     $req = $pdo->prepare($sql);
-    $req->execute(array($nom_evenement));
+    $req->execute(array($titre_evenement));
+
+    $sql = "UPDATE Parametrages SET champ_textearea = ? WHERE id = 5";
+    $req = $pdo->prepare($sql);
+    $req->execute(array($paragraphe_evenement));
+
     $result = $req;
 
     if($result) {
@@ -256,7 +261,7 @@ function ajax_typesPrecision($pdo, $horairesReservations2ID) {
 
     foreach ($typesPrecision as $typePrecision) {
         if($typePrecision->id_type == 6) {
-            $affichage .="<option value='$typePrecision->id_type'>" . $typePrecision->libelle . " (tous les rdv de l'heure sélectionnée seront bloqués)</option>";
+            $affichage .="<option value='$typePrecision->id_type'>" . $typePrecision->libelle . " (tous les rdv de à cette l'heure là seront bloqués)</option>";
         } else {
             $affichage .="<option value='$typePrecision->id_type'>" . $typePrecision->libelle . "</option>";
         }

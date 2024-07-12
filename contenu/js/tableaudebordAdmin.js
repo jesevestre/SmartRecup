@@ -182,12 +182,14 @@ $(document).ready(function(){
     })
 
     // Modale "Paramétrage"
-    // Pour le nom de l'événemement
+    // Pour le titre_evenement de l'événemement
     $('#option_evenement').change(function(){
         if($('#option_evenement').is(':checked') == true) {
-            document.getElementById('nom_evenement_visible').style.display = "block";
+            document.getElementById('titre_evenement_visible').style.display = "block";
+            document.getElementById('paragraphe_evenement_visible').style.display = "block";
         } else {
-            document.getElementById('nom_evenement_visible').style.display = "none";
+            document.getElementById('titre_evenement_visible').style.display = "none";
+            document.getElementById('paragraphe_evenement_visible').style.display = "none";
         }
     })
 

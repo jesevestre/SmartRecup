@@ -145,6 +145,9 @@ h4 {
 .icone-color {
     color: #444;
 }
+.style_checkbox:hover {
+    cursor: pointer;
+}
 
 /* Page modale */
 .form-control {

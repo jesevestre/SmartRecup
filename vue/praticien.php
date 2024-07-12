@@ -11,7 +11,7 @@
             <p class="justifie">Maxime Thiel, footballeur professionnel, a décidé de se lancer dans le domaine du massage bien-être et sportif mettant ainsi sa passion au service des autres.</p>
             <p class="justifie">Diplômé du centre de formation <a href="https://harmonie-bien-etre.fr/" target="_blank">Harmonie Bien-être</a> et <a href="https://colibrima.fr/" target="_blank">Colibri Massage Academy</a>, ce praticien aux mains d'or vous invite à profiter de ses compétences pour vous détendre et développer le meilleur de vous-même dans un cadre agréable, situé en face du parc du Hérons.</p>
             <p class="justifie">Passionné de sport, il vous fera oublier toutes vos douleurs physiques, qu'elles soient musculaires ou nerveuses. Que la douleur soit localisée au niveau du dos, des jambes, des bras, des épaules, des abdos ou de la nuque, Maxime vous soulagera.</p>
-            <img class="photo-img" src="../contenu/images/MaximePresentation.jpeg" alt="Image de Maxime Thiel" />
+            <img class="photo-img" src="../contenu/images/MaximePresentation.jpeg" alt="Image du praticien en train de pratiquer" />
         </div>
         <div class="col-md-6 pt-3">
             <h4>Les diplômes</h4>

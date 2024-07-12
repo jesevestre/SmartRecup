@@ -46,18 +46,18 @@ $parametrages = $req->fetchAll(PDO::FETCH_OBJ);
 
 // Liste des jours de réservations disponibles
 $sql = "SELECT id AS id_reservation, DATE_FORMAT(date, '%Y-%m-%d') AS date_reservation 
-    FROM Reservations 
-    WHERE id_utilisateur IS NULL AND DATE_FORMAT(date, '%Y-%m-%d') >= ?
-    GROUP BY date_reservation"; 
+        FROM Reservations 
+        WHERE id_utilisateur IS NULL AND DATE_FORMAT(date, '%Y-%m-%d') >= ?
+        GROUP BY date_reservation"; 
 $req = $pdo->prepare($sql);
 $req->execute(array($date_aujourdhui));
 $joursReservations = $req->fetchAll(PDO::FETCH_OBJ);
 
 // Liste des jours de réservations disponibles pour filtreAutresJoursModal
 $sql = "SELECT id AS id_reservation, DATE_FORMAT(date, '%Y-%m-%d') AS date_reservation 
-    FROM Reservations 
-    WHERE id_utilisateur IS NULL AND id_type = 1 AND DATE_FORMAT(date, '%Y-%m-%d') >= ?
-    GROUP BY date_reservation"; 
+        FROM Reservations 
+        WHERE id_utilisateur IS NULL AND id_type = 1 AND DATE_FORMAT(date, '%Y-%m-%d') >= ?
+        GROUP BY date_reservation"; 
 $req = $pdo->prepare($sql);
 $req->execute(array($date_apres_apres_demain));
 $filtreAutresJours = $req->fetchAll(PDO::FETCH_OBJ);
@@ -399,9 +399,7 @@ if($_SESSION["email"]) {
                                             $commentaireClient = str_replace("'", " ", $reservationAdministrateur->commentaireClient);
                                             $commentaireAdmins = str_replace("'", " ", $reservationAdministrateur->commentaireAdmins);
                                         ?>
-
-                                            <a class="btn secondary mx-auto w-100" name="action" onclick="javascript:voir_commentaire('<?= $commentaireClient ?>', '<?= $commentaireAdmins ?>', '<?= $reservationAdministrateur->reservation_id ?>');">
-                                            <i class="<?= $iconeCommentaire ?>"></i></a>
+                                            <a class="btn secondary mx-auto w-100" name="action" onclick="javascript:voir_commentaire('<?= $commentaireClient ?>', '<?= $commentaireAdmins ?>', '<?= $reservationAdministrateur->reservation_id ?>');"><i class="<?= $iconeCommentaire ?>"></i></a>
                                         </div>
                                         <div class="col-2">
                                             <a class="btn btn-success mx-auto w-100 btnRetirerRdvAdmin" data-ids="<?= $reservationAdministrateur->reservation_id . " " . $reservationAdministrateur->utilisateur_id ?>" data-bs-toggle="modal" data-bs-target="#btnRetirerRdvAdmin" href="#" data-bs-backdrop="static"><i class="fa fa-times"></i></a>
@@ -852,23 +850,27 @@ if($_SESSION["email"]) {
                     </div>
 
                     <div class="form-check form-switch mb-3">
-                        <input class="form-check-input" type="checkbox" name="option_email_1" <?= ($parametrages[0]->actif == 1 ? "checked" : ""); ?> >
+                        <input class="form-check-input" type="checkbox" class="style_checkbox" name="option_email_1" <?= ($parametrages[0]->actif == 1 ? "checked" : ""); ?> >
                         <label class="form-check-label" for="option_email_1">Réception d'un email pour le praticien lorsqu'un client <b>prend</b> une réservation</label>
                     </div>
 
                     <div class="form-check form-switch mb-3">
-                        <input class="form-check-input" type="checkbox" name="option_email_2" <?= ($parametrages[1]->actif == 1 ? "checked" : ""); ?>>
+                        <input class="form-check-input" type="checkbox" class="style_checkbox" name="option_email_2" <?= ($parametrages[1]->actif == 1 ? "checked" : ""); ?>>
                         <label class="form-check-label" for="option_email_2">Réception d'un email  pour le praticien lorsqu'un client <b>retire</b> une réservation</label>
                     </div>
 
                     <div class="form-check form-switch">
-                        <input class="form-check-input" type="checkbox" name="option_evenement" id="option_evenement" <?= ($parametrages[2]->actif == 1 ? "checked" : ""); ?>>
+                        <input class="form-check-input" type="checkbox" class="style_checkbox" name="option_evenement" id="option_evenement" <?= ($parametrages[2]->actif == 1 ? "checked" : ""); ?>>
                         <label class="form-check-label" for="option_evenement">La rubrique <b>Les événements</b> dans l'accueil est visible</label>
                     </div>
 
-                    <div id="nom_evenement_visible" <?= $parametrages[2]->actif == 1 ? "style='display: block'" : "style='display: none'" ?> >
-                        <label class="form-check-label" for="nom_evenement">Nom de l'évenement :</label>
-                        <input type="text" class="form-control" name="nom_evenement" id="nom_evenement" value="<?php echo $parametrages[3]->nom; ?>" <?php ?> >
+                    <div id="titre_evenement_visible" <?= $parametrages[2]->actif == 1 ? "style='display: block'" : "style='display: none'" ?> >
+                        <label class="form-check-label" for="titre_evenement">Nom de l'évenement :</label>
+                        <input type="text" class="form-control" name="titre_evenement" id="titre_evenement" value="<?php echo $parametrages[3]->champ_texte; ?>" <?php ?> >
+                    </div>
+                    <div id="paragraphe_evenement_visible" <?= $parametrages[2]->actif == 1 ? "style='display: block'" : "style='display: none'" ?> >
+                        <label class="form-check-label" for="paragraphe_evenement">Paragraphe de présentation de l'évenement :</label>
+                        <textarea class="form-control" row="4" max="255" name="paragraphe_evenement" id="paragraphe_evenement"><?php echo $parametrages[4]->champ_textearea; ?></textarea>
                     </div>
 
                 </div>

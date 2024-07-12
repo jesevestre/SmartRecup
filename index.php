@@ -19,7 +19,7 @@ $parametrages = $req->fetchAll(PDO::FETCH_OBJ);
 
 <div class="container-entete">
     <div class="logo-div">
-        <img src="contenu/images/Logo_smartrecup_noir_sans_fond.png" class="logo" alt="Image représentant le logo de la société" />
+        <a href="/vue/connexion-inscription.php"><img src="contenu/images/Logo_smartrecup_noir_sans_fond.png" class="logo" alt="Image représentant le logo de la société" /></a>
     </div>
 
     <div class="titre-div">
@@ -49,7 +49,7 @@ $parametrages = $req->fetchAll(PDO::FETCH_OBJ);
     </div>
     <div id="slogan-div" class="slogan-div">
         <h2 class="slogan-h2">Centre de préparation<br /> et récupération</h2>
-        <a class="slogan-button" href="vue/connexion-inscription.php" class="button button--secondary">Rendez-vous</a>
+        <a class="slogan-button" href="https://www.planity.com/smart-recup-59650-villeneuve-dascq" class="button button--secondary">Rendez-vous</a>
     </div>
 </div>
 
@@ -113,7 +113,7 @@ if($parametrages[2]->actif == 1){
         <h3>Événement</h3>
 
         <div id="slogan-div" class="slogan-div-evenements">
-            <a class="slogan-button" href="vue/evenement.php" style="border-color: #7985B1;" class="button button--secondary"><?php echo $parametrages[3]->nom ?></a>
+            <a class="slogan-button" href="vue/evenement.php" style="border-color: #7985B1;" class="button button--secondary"><?php echo $parametrages[3]->champ_texte ?></a>
         </div>
 
     </div>
@@ -123,22 +123,22 @@ if($parametrages[2]->actif == 1){
 }
 ?>
 
-<div class="container-second">
+<!-- <div class="container-second">
     <h3>Les partenariats</h3>
 
-    <div class="row d-flex justify-content-center pb-5">
+    <div class="row d-flex justify-content-center pb-5"> -->
         <!-- <div class="col-6 col-sm-5 col-md-4 col-lg-3 pt-3"> -->
             <!-- <a href="https://lestudio44.fr/" class="a_titre_et_texte_accueil" target="_blank"> -->
                 <!-- <img class="photo-img-accueil" src="contenu/images/partenariat_Studio_44.png" alt="Patenariat avec Le Studio 44" /> -->
             <!-- </a> -->
         <!-- </div> -->
-        <div class="col-6 col-sm-5 col-md-4 col-lg-3 pt-3">
+        <!-- <div class="col-6 col-sm-5 col-md-4 col-lg-3 pt-3">
             <a href="https://www.jcsainghin.com/" class="a_titre_et_texte_accueil" target="_blank">
                 <img class="photo-img-accueil" src="contenu/images/partenariat_Judo_Club_Sainghin.png" alt="Patenariat avec le Judo Club Sainghin" />
             </a>
         </div>
     </div>
-</div>
+</div> -->
 
 <script src="contenu/js/index.js"></script>
 
