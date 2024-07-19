@@ -565,7 +565,7 @@ if($_SESSION["email"]) {
                     </div>
                     <div class="form-group pb-2">
                         <label for="telephone">Téléphone :</label>
-                        <input type="text" class="form-control" name="telephone" id="telephone" value="<?= $utilisateur[0]->telephone ?>">
+                        <input type="text" class="form-control" name="telephone" id="telephone" value="<?= $utilisateur[0]->telephone ?>" maxlength="10">
                     </div>
                     <?php
                         $date_derniere_co = $utilisateur[0]->date_derniere_co;
@@ -675,7 +675,7 @@ if($_SESSION["email"]) {
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-            <div class="alert alert-warning small">
+                <div class="alert alert-warning small">
                     <i class="fa fa-exclamation-triangle"></i> Vous êtes sur le point de retirer ce rendez-vous. Il sera libéré pour un autre client.
                 </div>
             </div>

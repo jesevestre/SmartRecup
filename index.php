@@ -13,7 +13,7 @@ $parametrages = $req->fetchAll(PDO::FETCH_OBJ);
 
 <div class="container-message">
     <div class="message-div">
-        <p class="message-p"><b>Bon à savoir :</b> Le règlement des prestations et des abonnements s'effectue sur place.</p>
+        <p class="message-p"><b>Bon à savoir :</b> Le règlement des prestations et des abonnements s'effectue sur place ou sur Platity.</p>
     </div>
 </div>
 

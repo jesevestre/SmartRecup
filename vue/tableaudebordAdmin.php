@@ -832,9 +832,6 @@ if($_SESSION["email"]) {
     </div>
 </div>
 
-
-
-
 <!-- Modale de paramétrage -->
 <div class="modal fade" id="parametrages" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -887,10 +884,6 @@ if($_SESSION["email"]) {
         </form>
     </div>
 </div>
-
-
-
-
 
 <!-- Modale pour retirer une réservation -->
 <div class="modal fade" id="btnRetirerRdvAdmin" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">

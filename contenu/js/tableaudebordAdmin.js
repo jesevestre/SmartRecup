@@ -29,6 +29,7 @@ $('.btnRetirerRdvAdmin').click(function (e) {
 $('#btnSubmitRetirerRdvAdmin').click(function (e) {
     e.preventDefault();
     var $this = $(this);
+    
     retirerRdvAdmin($this.data("idReservation"), $this.data("idUtilisateur"));
 });
 

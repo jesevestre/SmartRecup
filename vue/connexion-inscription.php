@@ -161,7 +161,7 @@ if(!empty($_SESSION["email"])) {
                     <small class="text-muted">Type de numéro</small>
                 </div>
                 <div class="col-8 col-sm-9 col-md-8 col-lg-9 mx-auto">
-                    <input type="tel" name="telephone" class="form-control" pattern="[0-9]{3}[0-9]{3}[0-9]{4}" placeholder="Votre numéro de téléphone" <?php if($telephone != "") { ?> value="<?= $telephone; ?>" <?php } ?>>
+                    <input type="tel" name="telephone" class="form-control" pattern="[0-9]{3}[0-9]{3}[0-9]{4}" placeholder="Votre numéro de téléphone" <?php if($telephone != "") { ?> value="<?= $telephone; ?>" <?php } ?> maxlength="10">
                     <small class="text-muted">Champ facultatif</small>
                 </div>
             </div>
