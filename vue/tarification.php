@@ -8,9 +8,27 @@
         </div>
 
         <table class="table table-striped mb-5">
+            <thead class="text-white" style="background-color: rgba(33, 39, 93, 0.7)">
+                <tr>
+                    <th scope="col" colspan="2">Offre duo</th>
+                    <th scope="col" class="text-center">Prix</th>
+                    <th scope="col" class="text-center">Description</th>
+                </tr>
+            </thead>
+            <tbody class="table table-striped table-secondary">
+                <tr>
+                    <th scope="row">Offre duo</th>
+                    <td>Un massage au choix + pressothérapie ou cryothérapie compressive</td>
+                    <td class="text-center">60€</td>
+                    <td class="text-center">1h30</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <table class="table table-striped mb-5">
             <thead class="text-white" style="background-color: rgba(92, 92, 37, 0.7)">
                 <tr>
-                    <th scope="col" colspan="2">Pack d'engagement de 3 mois (peut évoluer en fonction des besoins)</th>
+                    <th scope="col" colspan="2">Packs sans engagement</th>
                     <th scope="col" class="text-center">Prix</th>
                     <th scope="col" class="text-center">Description</th>
                 </tr>
@@ -19,26 +37,68 @@
                 <tr>
                     <th scope="row">Pack&nbsp;1</th>
                     <td>Tous les <b class="retirer_espace_balise_b">massages aux choix</b> + pressothérapie ou cryothérapie compressive</td>
-                    <td class="text-center">80€</td>
+                    <td class="text-center">90€</td>
                     <td class="text-center"><b class="retirer_espace_balise_b">2 séances</b> d'1h</td>
+                </tr>
+                <tr>
+                    <th scope="row">1 séance pack&nbsp;1</th>
+                    <td>&nbsp;</b></td>
+                    <td class="text-center">45€</td>
+                    <td class="text-center">1h</td>
                 </tr>
                 <tr>
                     <th scope="row">Pack&nbsp;2</th>
                     <td>Tous les <b class="retirer_espace_balise_b">massages aux choix</b></td>
-                    <td class="text-center">120€</td>
+                    <td class="text-center">150€</td>
                     <td class="text-center"><b class="retirer_espace_balise_b">3 séances</b> d'1h</td>
                 </tr>
                 <tr>
-                    <th scope="row">Pack&nbsp;3</th>
-                    <td>Tous les <b class="retirer_espace_balise_b">massages aux choix</b> + pressothérapie ou cryothérapie compressive</td>
-                    <td class="text-center">150€</td>
-                    <td class="text-center"><b class="retirer_espace_balise_b">4 séances</b> d'1h</td>
+                    <th scope="row">1 séance pack&nbsp;2</th>
+                    <td>&nbsp;</b></td>
+                    <td class="text-center">50€</td>
+                    <td class="text-center"><b class="retirer_espace_balise_b">1h</td>
                 </tr>
             </tbody>
         </table>
 
         <table class="table table-striped mb-5">
-            <thead class="text-white" style="background-color: rgba(33, 39, 93, 0.7) !important;">
+            <thead class="text-white" style="background-color: rgba(33, 39, 93, 0.7)">
+                <tr>
+                    <th scope="col" colspan="2">Abonnements (engagnement minum 3 mois)</th>
+                    <th scope="col" class="text-center">Prix</th>
+                    <th scope="col" class="text-center">Description</th>
+                </tr>
+            </thead>
+            <tbody class="table table-striped table-secondary">
+                <tr>
+                    <th scope="row">Starter pack</th>
+                    <td>Tous les <b class="retirer_espace_balise_b">massages aux choix</b> + pressothérapie ou cryothérapie compressive</td>
+                    <td class="text-center">80€</td>
+                    <td class="text-center"><b class="retirer_espace_balise_b">2 séances</b> d'1h</td>
+                </tr>
+                <tr>
+                    <th scope="row">1 séance "Starter pack"</th>
+                    <td>&nbsp;</b></td>
+                    <td class="text-center">40€</td>
+                    <td class="text-center">1h30</td>
+                </tr>
+                <tr>
+                    <th scope="row">Prémium pack</th>
+                    <td>Tous les <b class="retirer_espace_balise_b">massages aux choix</b> + pressothérapie ou cryothérapie compressive</td>
+                    <td class="text-center">150€</td>
+                    <td class="text-center"><b class="retirer_espace_balise_b">3 séances</b> d'1h</td>
+                </tr>
+                <tr>
+                    <th scope="row">1 séance "Prémium pack"</th>
+                    <td>&nbsp;</b></td>
+                    <td class="text-center">37,50€</td>
+                    <td class="text-center"><b class="retirer_espace_balise_b">1h30</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <table class="table table-striped mb-5">
+            <thead class="text-white" style="background-color: rgba(92, 92, 37, 0.7)">
                 <tr>
                     <th scope="col" colspan="2">Les prestations</th>
                     <th scope="col" class="text-center">30&nbsp;min</th>
@@ -67,7 +127,7 @@
                 <tr>
                     <th scope="row">➞</th>
                     <td><a href="massage-ventouses.php" style="color: #222;"><b>Massage ventouses / scrapping</b></a></td>
-                    <td class="text-center"><b>30€</b></td>
+                    <td class="text-center"><b>35€</b></td>
                     <td class="text-center">----</td>
                 </tr>
                 <tr>
@@ -79,7 +139,7 @@
                 <tr>
                     <th scope="row">➞</th>
                     <td><a href="cryotherapie-compressive.php" style="color: #222;">Cryothérapie compressive</a></td>
-                    <td class="text-center">30€</td>
+                    <td class="text-center">35€</td>
                     <td class="text-center">----</td>
                 </tr>
             </tbody>
@@ -104,7 +164,7 @@
                 <a href="../" type="button" id="btnRetour" class="btn btn-danger col-10 mx-auto"><i class="fa-sharp fa-solid fa-arrow-left"></i> Retour</a>
             </div>
             <div class="col-6 d-grid mx-auto">
-                <a href="connexion-inscription.php" type="button" id="btnInscription" class="btn btn-secondary col-10 mx-auto">Rendez-vous <i class="fa-sharp fa-solid fa-arrow-right"></i></a>
+                <a href="../" type="button" id="btnInscription" class="btn btn-secondary col-10 mx-auto">Rendez-vous <i class="fa-sharp fa-solid fa-arrow-right"></i></a>
             </div>
         </div>
 

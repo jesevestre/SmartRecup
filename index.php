@@ -28,7 +28,7 @@ $parametrages = $req->fetchAll(PDO::FETCH_OBJ);
 
     <ul class="medias-div">
         <li class="bulle"><a href="https://instagram.com/smartrecup" target="_blank"><i class="fab fa-2x fa-instagram-square" alt="Lien pour accéder à Instagram" class="medias"></i></a></li>
-        <li class="bulle"><a onClick="ouvrirModaleSnapchat()"><i class="fab fa-2x fa-snapchat-ghost" alt="Lien pour accéder à Snapshat" class="medias"></i></a></li>
+        <li class="bulle"><a onClick="ouvrirModaleSnapchat()"><i class="fa-brands fa-2x fa-square-snapchat" alt="Lien pour accéder à Snapshat" class="medias"></i></a></li>
         <li class="bulle"><a href="vue/contact.php"><i class="fas fa-2x fa-envelope" alt="Lien pour prendre contact" class="medias"></i></a></li>
     </ul>
 

@@ -73,7 +73,7 @@
             <a href="../" type="button" id="btnRetour" class="btn btn-danger col-10 mx-auto"><i class="fa-sharp fa-solid fa-arrow-left"></i> Retour</a>
         </div>
         <div class="col-6 d-grid mx-auto">
-            <a href="connexion-inscription.php" type="button" id="btnInscription" class="btn btn-secondary col-10 mx-auto">Rendez-vous <i class="fa-sharp fa-solid fa-arrow-right"></i></a>
+            <a href="../" type="button" id="btnInscription" class="btn btn-secondary col-10 mx-auto">Rendez-vous <i class="fa-sharp fa-solid fa-arrow-right"></i></a>
         </div>
     </div>
 
