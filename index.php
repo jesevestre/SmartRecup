@@ -3,7 +3,6 @@
 <link href="contenu/css/styleAccueil.css" rel="stylesheet" />
 
 <?php
-// Paramétrages
 $sql = "SELECT *
         FROM Parametrages"; 
 $req = $pdo->prepare($sql);
