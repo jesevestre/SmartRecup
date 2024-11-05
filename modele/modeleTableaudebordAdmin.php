@@ -135,7 +135,12 @@ function reservationPourClient($pdo, $id_utilisateur, $commentaireClient, $comme
     }
 }
 
-function parametrages($pdo, $option_email_1, $option_email_2, $option_evenement, $titre_evenement, $paragraphe_evenement) {
+function parametrages($pdo, $option_rdv, $option_email_1, $option_email_2, $option_evenement, $titre_evenement, $paragraphe_evenement) {
+
+    $sql = "UPDATE Parametrages SET actif = ? WHERE id = 6";
+    $req = $pdo->prepare($sql);
+    $req->execute(array($option_rdv));
+    
     $sql = "UPDATE Parametrages SET actif = ? WHERE id = 1";
     $req = $pdo->prepare($sql);
     $req->execute(array($option_email_1));

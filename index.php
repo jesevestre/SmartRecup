@@ -48,7 +48,7 @@ $parametrages = $req->fetchAll(PDO::FETCH_OBJ);
     </div>
     <div id="slogan-div" class="slogan-div">
         <h2 class="slogan-h2">Centre de préparation<br /> et récupération</h2>
-        <a class="slogan-button" href="https://www.planity.com/smart-recup-59650-villeneuve-dascq" class="button button--secondary">Rendez-vous</a>
+        <a class="slogan-button" href='<?= ($parametrages[5]->actif == 1 ? "vue/connexion-inscription.php" : "https://www.planity.com/smart-recup-59650-villeneuve-dascq"); ?>' class="button button--secondary">Rendez-vous</a>
     </div>
 </div>
 

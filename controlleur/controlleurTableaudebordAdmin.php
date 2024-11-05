@@ -127,13 +127,14 @@ if(isset($_POST["action"]) && $_POST["action"] == "PrendreReservationModal") {
 }
 
 if(isset($_POST["action"]) && $_POST["action"] == "parametrages") {
+	$option_rdv = $_POST["option_rdv"];
 	$option_email_1 = $_POST["option_email_1"];
 	$option_email_2 = $_POST["option_email_2"];
 	$option_evenement = $_POST["option_evenement"];
 	$titre_evenement = $_POST["titre_evenement"];
 	$paragraphe_evenement = $_POST["paragraphe_evenement"];
 
-	$result = parametrages($pdo, ($option_email_1 == "on" ? 1 : 0), ($option_email_2 == "on" ? 1 : 0), ($option_evenement == "on" ? 1 : 0), $titre_evenement, $paragraphe_evenement);
+	$result = parametrages($pdo, ($option_rdv == "on" ? 1 : 0), ($option_email_1 == "on" ? 1 : 0), ($option_email_2 == "on" ? 1 : 0), ($option_evenement == "on" ? 1 : 0), $titre_evenement, $paragraphe_evenement);
 
 	if($result == true) {
 		echo "<script>window.location.href='../vue/tableaudebordAdmin.php?success=success8';</script>"; exit;

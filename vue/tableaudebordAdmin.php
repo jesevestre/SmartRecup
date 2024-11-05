@@ -5,15 +5,15 @@
 
 <?php
 $date_aujourdhui = date("Y-m-d");
-$dateHeure_aujourdhui = date("Y-m-dTh:00");
+$dateHeure_aujourdhui = date("Y-m-dTH:00");
 $dateHeure_aujourdhui1 = substr($dateHeure_aujourdhui, 0, 10);
 $dateHeure_aujourdhui2 = substr($dateHeure_aujourdhui, 13, 6);
 $dateHeure_aujourdhui = $dateHeure_aujourdhui1 . $dateHeure_aujourdhui2;
 
 $date_demain = date("Y-m-d", strtotime("+1 day"));
-$dateHeure_demain = date("Y-m-dTh:00", strtotime("+1 day"));
+$dateHeure_demain = date("Y-m-dTH:00", strtotime("+1 day"));
 $dateHeure_demain1 = substr($dateHeure_demain, 0, 10);
-$dateHeure_demain2 = substr($dateHeure_demain, 14, 6);
+$dateHeure_demain2 = substr($dateHeure_demain, 13, 6);
 $dateHeure_demain = $dateHeure_demain1 . "T" . $dateHeure_demain2;
 
 $date_apres_demain = date("Y-m-d", strtotime("+2 day"));
@@ -847,18 +847,23 @@ if($_SESSION["email"]) {
                     </div>
 
                     <div class="form-check form-switch mb-3">
+                        <input class="form-check-input" type="checkbox" class="style_checkbox" name="option_rdv" <?= ($parametrages[5]->actif == 1 ? "checked" : ""); ?> >
+                        <label class="form-check-label" for="option_rdv">Redirection vers le site de prise de rdv <b>interne</b>, sinon redirection vers <b>Planity</b>.</label>
+                    </div>
+
+                    <div class="form-check form-switch mb-3">
                         <input class="form-check-input" type="checkbox" class="style_checkbox" name="option_email_1" <?= ($parametrages[0]->actif == 1 ? "checked" : ""); ?> >
-                        <label class="form-check-label" for="option_email_1">Réception d'un email pour le praticien lorsqu'un client <b>prend</b> une réservation</label>
+                        <label class="form-check-label" for="option_email_1">Réception d'un email pour le praticien lorsqu'un client <b>prend</b> une réservation.</label>
                     </div>
 
                     <div class="form-check form-switch mb-3">
                         <input class="form-check-input" type="checkbox" class="style_checkbox" name="option_email_2" <?= ($parametrages[1]->actif == 1 ? "checked" : ""); ?>>
-                        <label class="form-check-label" for="option_email_2">Réception d'un email  pour le praticien lorsqu'un client <b>retire</b> une réservation</label>
+                        <label class="form-check-label" for="option_email_2">Réception d'un email  pour le praticien lorsqu'un client <b>retire</b> une réservation.</label>
                     </div>
 
                     <div class="form-check form-switch">
                         <input class="form-check-input" type="checkbox" class="style_checkbox" name="option_evenement" id="option_evenement" <?= ($parametrages[2]->actif == 1 ? "checked" : ""); ?>>
-                        <label class="form-check-label" for="option_evenement">La rubrique <b>Les événements</b> dans l'accueil est visible</label>
+                        <label class="form-check-label" for="option_evenement">La rubrique <b>Les événements</b> dans l'accueil est visible.</label>
                     </div>
 
                     <div id="titre_evenement_visible" <?= $parametrages[2]->actif == 1 ? "style='display: block'" : "style='display: none'" ?> >
