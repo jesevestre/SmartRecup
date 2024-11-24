@@ -105,9 +105,24 @@ $parametrages = $req->fetchAll(PDO::FETCH_OBJ);
 
 <hr class="horizontale_separation mt-2 mb-4">
 
+<div id="praticien" class="container-second mb-4">
+    <h3>Développeur et webmaster de ce site web</h3>
+
+    <div class="row">
+        <div class="col-md-6 pt-3">
+            <p class="justifie">Jean-Baptiste Sevestre, avec une expérience professionnelle de 3 ans en tant que développeur web fullstack, j’ai à cœur de développer, améliorer et maintenir des solutions avec un haut niveau de qualité et d’exigence.</p>
+        </div>
+        <div class="col-md-6 pt-3">
+            <p class="justifie">Par mes études, je possède une expertise poussée des principes UX/UI, du responsive et du web design, et j'ai été, lors de mon dernier poste, chef de projet d’une équipe de 3 personnes. Pour en savoir plus, je vous invite à consulter mon site internet personnel : <a href="http://jsevestre02.free.fr/" target="_blank">http://jsevestre02.free.fr/</a></p>
+        </div>
+    </div>
+</div>
+
 <?php
 if($parametrages[2]->actif == 1){
 ?>
+    <hr class="horizontale_separation mt-2 mb-4">
+
     <div class="container-second">
         <h3>Événement</h3>
 
