@@ -411,7 +411,7 @@
         <div class="mt-2">
             <h3>Nous contacter</h3>
             <div class="mb-4">
-                <p class="justifie">Pour en savoir plus sur nos pratiques de confidentialité, si vous avez des questions ou si vous souhaitez déposer une réclamation, veuillez nous contacter par e-mail à <a href="mailto:contact@smartrécup.fr">contact@smartrécup.fr</a>, ou par courrier à l'adresse suivante :<br /></p>
+                <p class="justifie">Pour en savoir plus sur nos pratiques de confidentialité, si vous avez des questions ou si vous souhaitez déposer une réclamation, veuillez passer par le formulaire de contact en cliquant <a href="/vue/contact.php">ici</a>, ou par courrier à l'adresse suivante :<br /></p>
                 <p class="justifie">
                 <ul>
                     <li>

@@ -90,15 +90,10 @@ $parametrages = $req->fetchAll(PDO::FETCH_OBJ);
 
     <div class="row">
         <div class="col-md-6 pt-3">
-            <p class="justifie">Maxime Thiel, footballeur professionnel, a décidé de se lancer dans le domaine du massage bien-être et sportif mettant ainsi sa passion au service des autres.</p>
+            <p class="justifie">Maxime Thiel, footballeur professionnel, a décidé de se lancer dans le domaine du massage bien-être et sportif mettant ainsi sa passion au service des autres. Pour en savoir plus et accéder à ses diplômes et qualifications, cliquez <a href="vue/praticien.php">ici</a>.</p>
         </div>
         <div class="col-md-6 pt-3">
             <p class="justifie">Diplômé du centre de formation <a href="https://harmonie-bien-etre.fr/" target="_blank">Harmonie Bien-être</a> et <a href="https://colibrima.fr/" target="_blank">Colibri Massage Academy</a>, ce praticien aux mains d'or vous invite à profiter de ses compétences pour vous détendre et développer le meilleur de vous-même dans un cadre agréable, situé en face du parc du Hérons.</p>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-6 pt-3">
-            <p class="justifie">Pour en savoir plus et accéder à ses diplômes et qualifications, cliquez <a href="vue/praticien.php">ici</a>.</p>
         </div>
     </div>
 </div>
@@ -106,14 +101,14 @@ $parametrages = $req->fetchAll(PDO::FETCH_OBJ);
 <hr class="horizontale_separation mt-2 mb-4">
 
 <div id="praticien" class="container-second mb-4">
-    <h3>Développeur et webmaster de ce site web</h3>
+    <h3>Développeur et webmaster</h3>
 
     <div class="row">
         <div class="col-md-6 pt-3">
-            <p class="justifie">Jean-Baptiste Sevestre, avec une expérience professionnelle de 3 ans en tant que développeur web fullstack, j’ai à cœur de développer, améliorer et maintenir des solutions avec un haut niveau de qualité et d’exigence.</p>
+            <p class="justifie">Vous cherchez un développeur web avec de l'expérience et une grande rigueur ? Je m'appelle Jean-Baptiste, je m'occupe durant mon temps libre notamment de ce site web.</p>
         </div>
         <div class="col-md-6 pt-3">
-            <p class="justifie">Par mes études, je possède une expertise poussée des principes UX/UI, du responsive et du web design, et j'ai été, lors de mon dernier poste, chef de projet d’une équipe de 3 personnes. Pour en savoir plus, je vous invite à consulter mon site internet personnel : <a href="http://jsevestre02.free.fr/" target="_blank">http://jsevestre02.free.fr/</a></p>
+            <p class="justifie">J'ai à coeur de développer, améliorer et maintenir des solutions avec un haut niveau de qualité et d’exigence. Je possède une expertise poussée en UX/UI, du responsive et du web design. Si cela vous intéresse, je vous invite à consulter ce site web : <a href="http://jsevestre02.free.fr/" target="_blank">http://jsevestre02.free.fr/</a></p>
         </div>
     </div>
 </div>
