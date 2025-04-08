@@ -151,7 +151,7 @@
 
         <div class="row">
             <div class="col-md-6">
-                <p class="justifie">Merci de prévenir <b>48 heures à l'avance</b> en cas de désistement ou en se désinscrivant sur <a href="connexion-inscription.php" target="_blank">l'application de réservation</a>. Toute réservation non annulée au moins 48 heures avant le rendez-vous <b>est concidérée comme dû</b>.</p>
+                <p class="justifie">Merci de prévenir <b>48 heures à l'avance</b> en cas de désistement ou en se désinscrivant sur <a href="../">l'application de réservation</a>. Toute réservation non annulée au moins 48 heures avant le rendez-vous <b>est concidérée comme dû</b>.</p>
             </div>
 
             <div class="col-md-6"> 

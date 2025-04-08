@@ -101,6 +101,7 @@ $parametrages = $req->fetchAll(PDO::FETCH_OBJ);
 <hr class="horizontale_separation mt-2 mb-4">
 
 <div id="praticien" class="container-second mb-4">
+<<<<<<< HEAD
     <h3>Ce site web</h3>
 
     <div class="row">
@@ -109,6 +110,16 @@ $parametrages = $req->fetchAll(PDO::FETCH_OBJ);
         </div>
         <div class="col-md-6 pt-3">
             <p class="justifie">J'ai à coeur de développer, améliorer et maintenir des solutions avec un haut niveau de qualité et d'exigence. Je possède une expertise poussée en UX/UI, du responsive et du web design. Si cela vous intéresse, je vous invite à contacter le <a href="tel:+33604460391">06 04 46 03 91</a></p>
+=======
+    <h3>Développeur et webmaster</h3>
+
+    <div class="row">
+        <div class="col-md-6 pt-3">
+            <p class="justifie">Vous cherchez un développeur web avec de l'expérience et une grande rigueur ? Je m'appelle Jean-Baptiste, je m'occupe durant mon temps libre notamment de ce site web.</p>
+        </div>
+        <div class="col-md-6 pt-3">
+            <p class="justifie">J'ai à coeur de développer, améliorer et maintenir des solutions avec un haut niveau de qualité et d’exigence. Je possède une expertise poussée en UX/UI, du responsive et du web design. Si cela vous intéresse, je vous invite à consulter ce site web : <a href="http://jsevestre02.free.fr/" target="_blank">http://jsevestre02.free.fr/</a></p>
+>>>>>>> 4984eef002bb9c70d36599090d6de2227b06a410
         </div>
     </div>
 </div>
