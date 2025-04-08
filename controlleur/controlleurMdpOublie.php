@@ -8,7 +8,10 @@ if(isset($_POST["MdpOublie"])) {
 	$email = htmlentities($_POST["email"]);
 
 	if(!empty($_POST["g-recaptcha-response"])) {
-		$recaptcha = new \ReCaptcha\ReCaptcha("6LcilIcpAAAAALT2M2ToWMBYxftemduazzzk16bD");
+		/* Pour SmartRécup
+		$recaptcha = new \ReCaptcha\ReCaptcha("6LcilIcpAAAAALT2M2ToWMBYxftemduazzzk16bD"); */
+		/* Pour SameSport */
+		$recaptcha = new \ReCaptcha\ReCaptcha("6LcNRQ4rAAAAAISEehZ7w6420Z4etkuZ3hmKKcHA");
 		$resp = $recaptcha->verify($_POST["g-recaptcha-response"]);
 
 		if($resp->isSuccess()) {

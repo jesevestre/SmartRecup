@@ -76,7 +76,10 @@
             </div>
 
             <div class="legendeCaptcha mb-4">
-                <div class="g-recaptcha" data-sitekey="6LcilIcpAAAAAJ1n-hprVbOwKm_jsuzFnendK_ui"></div>
+                <!-- Pour SmartRécup -->
+                <!-- <div class="g-recaptcha" data-sitekey="6LcilIcpAAAAAJ1n-hprVbOwKm_jsuzFnendK_ui"></div> -->
+                <!-- Pour SameSport -->
+                <div class="g-recaptcha" data-sitekey="6Ldu28YpAAAAAH2tnroieIhssHx7aVEbuDqFpNGg"></div>
             </div>
 
             <div class="pt-4 d-grid d-flex col-12 mx-auto">
